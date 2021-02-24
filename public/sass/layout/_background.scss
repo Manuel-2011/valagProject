@@ -18,6 +18,7 @@
             transform: rotate(90deg);
         }
     }
+
     &--2 {
         width: 200px;
         height: 200px; // change size
@@ -25,9 +26,54 @@
         top: 200px;
         left: 300px;
         transform: scale(2);
+    }
+
+    &--3 {
+        width: 200px;
+        height: 200px; // change size
+        position: fixed;
+        top: 400px;
+        left: 600px;
+        transform: scale(1);
 
         linearGradient {
             transform: rotate(90deg);
         }
+    }
+
+    &--4 {
+        width: 300px;
+        height: 200px; // change size
+        position: fixed;
+        top: 600px;
+        left: 10px;
+        transform: scale(1);
+    }
+
+    &--5 {
+        width: 300px;
+        height: 200px; // change size
+        position: fixed;
+        top: 10px;
+        left: 600px;
+        transform: scale(1);
+    }
+
+    &--6 {
+        width: 300px;
+        height: 200px; // change size
+        position: fixed;
+        top: 300px;
+        left: 1300px;
+        transform: scale(2.5);
+    }
+
+    &--7 {
+        width: 300px;
+        height: 200px; // change size
+        position: fixed;
+        top: 500px;
+        left: 1500px;
+        transform: scale(2);
     }
 }
