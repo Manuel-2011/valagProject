@@ -1,0 +1,25 @@
+.background-form--color1 {
+  stop-color: #1b3679; }
+
+.background-form--color2 {
+  stop-color: #f80040; }
+
+.background-form--1 {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: scale(1); }
+  .background-form--1 linearGradient {
+    transform: rotate(90deg); }
+
+.background-form--2 {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 200px;
+  left: 300px;
+  transform: scale(2); }
+  .background-form--2 linearGradient {
+    transform: rotate(90deg); }
