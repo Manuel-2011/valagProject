@@ -3,7 +3,6 @@
     height: 8rem;
     background-color: $navbar-color;
     padding: 0 5rem;
-    margin-bottom: 5rem;
 
     position: fixed;
 
@@ -14,8 +13,8 @@
     box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
 
     &__logo {
-        font-family: 'Bungee', cursive;
         font-size: 3rem;
+        font-weight: 400;
         letter-spacing: 3px;
 
         display: inline-block;
@@ -31,15 +30,19 @@
 
         &__link {
             margin-right: 2rem;
+            position: relative;
+
+            &.active {
+                border-bottom: 3px solid $background-form-color1;
+            }
         }
         &__link a:link,
         &__link a:visited {
             text-decoration: none;
             margin-right: 2rem;
             color: inherit;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 1.35rem;
+            font-weight: 300;
+            font-size: 1.5rem;
         }
     }
 } 

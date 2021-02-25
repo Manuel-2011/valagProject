@@ -1,20 +1,69 @@
 .carousel {
     &__container {
-        width: 60%;
-        margin: auto;
-        border: 5px solid black;
+        width: 100vw;
         overflow: hidden;
+
+        border-radius: 3px 3px 45rem 3px;
     }
     
     &__slide {
         display: flex;
-        width: 100%;
-        height: 50rem;
+        width: inherit;
+        height: 80vh;
+
+        &__sheet {
+            width: inherit;
+            height: 100%;
+            background-image: linear-gradient(to right, $background-form-color1, $background-form-color2);
+            position: relative;
+        }
 
         &__image {
             object-fit: cover;
             object-position: center;
-            width: 100%;
+            width: inherit;
+            height: 80rem;
+            opacity: 0.6;
         }
+
+        &__content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-color: rgba($shadow-color, .2);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 1rem 2rem 1rem rgba($shadow-color, .45);
+
+            color: $font-color-carousel;
+
+        }
+    }
+
+    &__controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &--left {
+            left: 13rem;
+        }
+
+        &--right {
+            right: 13rem;
+        }
+    }
+
+    &__tabs {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

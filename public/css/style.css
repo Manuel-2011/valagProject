@@ -10,34 +10,94 @@ html {
 
 body {
   box-sizing: border-box;
-  color: #333333; }
+  color: #333333;
+  font-family: 'Montserrat', sans-serif !important; }
+
+.carousel-header {
+  font-size: 8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 6rem; }
+
+.carousel-text {
+  font-size: 2.5rem;
+  font-weight: 200; }
+
+.btn-carousel, .btn-carousel:link, .btn-carousel:visited {
+  text-decoration: none;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  color: #333333;
+  border: 0;
+  margin-top: 7rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  box-shadow: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s; }
+
+.btn-carousel:hover {
+  box-shadow: 0 1rem 3rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); }
+
+.btn-carousel:active {
+  box-shadow: 0 1rem 2.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-2.5px); }
+
+.btn-icon, .btn-icon:link, .btn-icon:visited {
+  text-decoration: none;
+  background-color: transparent;
+  padding: 1rem;
+  color: #fff;
+  border: 0;
+  font-size: 3rem;
+  box-shadow: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s; }
+
+.btn-icon:hover {
+  transform: scale(1.2) translateY(-3rem);
+  color: #f80040;
+  background-color: #f7f7f7; }
+
+.btn-icon:active {
+  color: #f80040;
+  transform: scale(1) translateY(-2rem);
+  background-color: #f7f7f7; }
+
+.btn-icon--tabs {
+  padding: 0.3rem;
+  border-radius: 2px;
+  height: 1rem;
+  width: 3rem;
+  display: inline-block;
+  background-color: rgba(151, 151, 151, 0.7);
+  margin-right: 1rem;
+  cursor: pointer; }
+  .btn-icon--tabs:hover {
+    transform: scale(1.2);
+    background-color: #f7f7f7; }
+  .btn-icon--tabs.active {
+    transform: scale(1);
+    background-color: #f7f7f7; }
 
 header {
   height: 100vh; }
-
-.banner {
-  width: 80%;
-  height: 90vh;
-  margin: 0 auto;
-  border-radius: 3px 3px 45rem 3px;
-  background-image: linear-gradient(to right, rgba(27, 54, 121, 0.8), rgba(248, 0, 64, 0.8)), url("../img/man-with-mac.jpg");
-  background-size: cover;
-  background-position: top; }
 
 .navbar {
   width: 100%;
   height: 8rem;
   background-color: #f7f7f7;
   padding: 0 5rem;
-  margin-bottom: 5rem;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .navbar__logo {
-    font-family: 'Bungee', cursive;
     font-size: 3rem;
+    font-weight: 400;
     letter-spacing: 3px;
     display: inline-block;
     background-image: linear-gradient(to top right, #1b3679, #f80040);
@@ -48,30 +108,67 @@ header {
     list-style-type: none;
     display: flex; }
     .navbar__links__link {
-      margin-right: 2rem; }
+      margin-right: 2rem;
+      position: relative; }
+      .navbar__links__link.active {
+        border-bottom: 3px solid #1b3679; }
     .navbar__links__link a:link,
     .navbar__links__link a:visited {
       text-decoration: none;
       margin-right: 2rem;
       color: inherit;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 1.35rem; }
+      font-weight: 300;
+      font-size: 1.5rem; }
 
 .carousel__container {
-  width: 60%;
-  margin: auto;
-  border: 5px solid black;
-  overflow: hidden; }
+  width: 100vw;
+  overflow: hidden;
+  border-radius: 3px 3px 45rem 3px; }
 
 .carousel__slide {
   display: flex;
-  width: 100%;
-  height: 50rem; }
+  width: inherit;
+  height: 80vh; }
+  .carousel__slide__sheet {
+    width: inherit;
+    height: 100%;
+    background-image: linear-gradient(to right, #1b3679, #f80040);
+    position: relative; }
   .carousel__slide__image {
     object-fit: cover;
     object-position: center;
-    width: 100%; }
+    width: inherit;
+    height: 80rem;
+    opacity: 0.6; }
+  .carousel__slide__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.45);
+    color: #fff; }
+
+.carousel__controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+  .carousel__controls--left {
+    left: 13rem; }
+  .carousel__controls--right {
+    right: 13rem; }
+
+.carousel__tabs {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%); }
 
 .background-form--color1 {
   stop-color: #1b3679; }

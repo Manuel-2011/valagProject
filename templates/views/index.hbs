@@ -7,9 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,27 +18,66 @@
         <nav class="navbar">
             <div class="navbar__logo">VALAG</div>
             <ul class="navbar__links">
-                <li class="navbar__links__link"><a href="#">SERVICIOS</a></li>
+                <li class="navbar__links__link"><a href="/">HOME</a></li>
                 <li class="navbar__links__link"><a href="#">NOSOTROS</a></li>
                 <li class="navbar__links__link"><a href="#">CONTÁCTANOS</a></li>
             </ul>
         </nav>
 
-        <div class="banner">
-        </div>
-
         <div class="carousel">
             <div class="carousel__container">
                 <div class="carousel__slide">
-                    <img class="carousel__slide__image carousel__slide__image--0" src="/img/fibra-optica.jpg" alt="Fibra optica" id="last-clone">
-                    <img class="carousel__slide__image carousel__slide__image--1" src="/img/man-with-mac.jpg" alt="Man in front of a laptop">
-                    <img class="carousel__slide__image carousel__slide__image--2" src="/img/hardware.jpg" alt="hardware">
-                    <img class="carousel__slide__image carousel__slide__image--3" src="/img/fibra-optica.jpg" alt="Fibra optica" id="first-clone">
+                    <div class="carousel__slide__sheet">
+                        <img class="carousel__slide__image carousel__slide__image--0" src="/img/wires.jpg" alt="Fibra optica" id="last-clone">
+                        <div class="carousel__slide__content">
+                            <h2 class="carousel-header">Fibra óptica</h2>
+                            <h4 class="carousel-text">Las instalaciones de fibra óptica es uno de nuestros servicios más demandados, somos reconocidos por utilizar material de la mejor calidad, ofrecer de las más altas velocidades del mercado, y garantizar la instalación hasta por un año.</h4>
+                            <div class="actions">
+                                <button class="btn-carousel">Contáctanos</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slide__sheet">
+                        <img class="carousel__slide__image carousel__slide__image--1" src="/img/man-with-mac.jpg" alt="Man in front of a laptop">
+                        <div class="carousel__slide__content">
+                            <h2 class="carousel-header">¿Qué es VALAG?</h2>
+                            <h4 class="carousel-text">Ofrecemos las mejores soluciones coporativas en TIC de todo Colombia. Nuestra especialidad son las instalaciones de fibra óptica.</h4>
+                            <div class="actions">
+                                <button class="btn-carousel">Cónocenos</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slide__sheet">
+                        <img class="carousel__slide__image carousel__slide__image--2" src="/img/white-architecture.jpg" alt="hardware">
+                        <div class="carousel__slide__content">
+                            <h2 class="carousel-header">Nuestros Servicios</h2>
+                            <h4 class="carousel-text">Contamos con personal calificado para ofrecer y garantizar nuestros servicios que van desde instalaciones de fibra óptica hasta el desarrollo de soluciones tecnológicas ajustadas a sus necesidades.</h4>
+                            <div class="actions">
+                                <button class="btn-carousel">Conoce nuestros servicios</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel__slide__sheet">
+                        <img class="carousel__slide__image carousel__slide__image--3" src="/img/wires.jpg" alt="Fibra optica" id="first-clone">
+                        <div class="carousel__slide__content">
+                            <h2 class="carousel-header">Fibra óptica</h2>
+                            <h4 class="carousel-text">Las instalaciones de fibra óptica es uno de nuestros servicios más demandados, somos reconocidos por utilizar material de la mejor calidad, ofrecer de las más altas velocidades del mercado, y garantizar la instalación hasta por un año.</h4>
+                            <div class="actions">
+                                <button class="btn-carousel">Contáctanos</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <button class="carousel__controls--left" id="prevBtn"><ion-icon name="chevron-back-outline"></ion-icon></button>
-            <button class="carousel__controls--right" id="nextBtn"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+            <button class="carousel__controls carousel__controls--left btn-icon" id="prevBtn"><ion-icon name="chevron-back-outline"></ion-icon></button>
+            <button class="carousel__controls carousel__controls--right btn-icon" id="nextBtn"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+
+            <div class="carousel__tabs">
+                <div class="btn-icon btn-icon--tabs" id="carousel-tab-1"></ion-icon></div>
+                <div class="btn-icon btn-icon--tabs" id="carousel-tab-2"></ion-icon></div>
+                <div class="btn-icon btn-icon--tabs" id="carousel-tab-3"></ion-icon></div>
+            </div>
         </div>
 
         <div class="slider">
@@ -46,6 +86,9 @@
     </header>
 
     <script src="/js/carousel.js"></script>
+    <script src="/js/navbar.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
