@@ -59,19 +59,23 @@ header {
       font-size: 1.35rem; }
 
 .carousel__container {
-  width: 60%;
+  width: 150rem;
   margin: auto;
-  border: 5px solid black;
-  overflow: hidden; }
+  overflow: hidden;
+  border-radius: 3px 3px 45rem 3px; }
 
 .carousel__slide {
   display: flex;
-  width: 100%;
+  width: inherit;
   height: 50rem; }
+  .carousel__slide__sheet {
+    width: inherit;
+    height: 100%; }
   .carousel__slide__image {
     object-fit: cover;
     object-position: center;
-    width: 100%; }
+    width: inherit;
+    height: 50rem; }
 
 .background-form--color1 {
   stop-color: #1b3679; }
