@@ -45,4 +45,25 @@
 
         }
     }
+
+    &__controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &--left {
+            left: 13rem;
+        }
+
+        &--right {
+            right: 13rem;
+        }
+    }
+
+    &__tabs {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

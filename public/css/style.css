@@ -10,7 +10,8 @@ html {
 
 body {
   box-sizing: border-box;
-  color: #333333; }
+  color: #333333;
+  font-family: 'Montserrat', sans-serif !important; }
 
 .carousel-header {
   font-size: 8rem;
@@ -21,7 +22,7 @@ body {
 
 .carousel-text {
   font-size: 2.5rem;
-  font-weight: 400; }
+  font-weight: 200; }
 
 .btn-carousel, .btn-carousel:link, .btn-carousel:visited {
   text-decoration: none;
@@ -45,6 +46,42 @@ body {
   box-shadow: 0 1rem 2.5rem 1rem rgba(0, 0, 0, 0.2);
   transform: translateY(-2.5px); }
 
+.btn-icon, .btn-icon:link, .btn-icon:visited {
+  text-decoration: none;
+  background-color: transparent;
+  padding: 1rem;
+  color: #fff;
+  border: 0;
+  font-size: 3rem;
+  box-shadow: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s; }
+
+.btn-icon:hover {
+  transform: scale(1.2) translateY(-3rem);
+  color: #f80040;
+  background-color: #f7f7f7; }
+
+.btn-icon:active {
+  color: #f80040;
+  transform: scale(1) translateY(-2rem);
+  background-color: #f7f7f7; }
+
+.btn-icon--tabs {
+  padding: 0.3rem;
+  border-radius: 2px;
+  height: 1rem;
+  width: 3rem;
+  display: inline-block;
+  background-color: rgba(151, 151, 151, 0.7);
+  margin-right: 1rem;
+  cursor: pointer; }
+  .btn-icon--tabs:hover {
+    transform: scale(1.2);
+    background-color: #f7f7f7; }
+  .btn-icon--tabs.active {
+    transform: scale(1);
+    background-color: #f7f7f7; }
+
 header {
   height: 100vh; }
 
@@ -59,8 +96,8 @@ header {
   align-items: center;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .navbar__logo {
-    font-family: 'Bungee', cursive;
     font-size: 3rem;
+    font-weight: 400;
     letter-spacing: 3px;
     display: inline-block;
     background-image: linear-gradient(to top right, #1b3679, #f80040);
@@ -71,15 +108,17 @@ header {
     list-style-type: none;
     display: flex; }
     .navbar__links__link {
-      margin-right: 2rem; }
+      margin-right: 2rem;
+      position: relative; }
+      .navbar__links__link.active {
+        border-bottom: 3px solid #1b3679; }
     .navbar__links__link a:link,
     .navbar__links__link a:visited {
       text-decoration: none;
       margin-right: 2rem;
       color: inherit;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 1.35rem; }
+      font-weight: 300;
+      font-size: 1.5rem; }
 
 .carousel__container {
   width: 100vw;
@@ -115,6 +154,21 @@ header {
     border-radius: 5px;
     box-shadow: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.45);
     color: #fff; }
+
+.carousel__controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+  .carousel__controls--left {
+    left: 13rem; }
+  .carousel__controls--right {
+    right: 13rem; }
+
+.carousel__tabs {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%); }
 
 .background-form--color1 {
   stop-color: #1b3679; }
