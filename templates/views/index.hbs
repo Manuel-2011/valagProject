@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    {{> decForm1 }}
-    {{> decForm2 }}
-    {{> decForm3 }}
-    {{> decForm4 }}
-    {{> decForm5 }}
-    {{> decForm6 }}
-    {{> decForm7 }}
+
+    <header>
+        <nav class="navbar">
+            <div class="navbar__logo">VALAG</div>
+            <ul class="navbar__links">
+                <li class="navbar__links__link"><a href="#">SERVICIOS</a></li>
+                <li class="navbar__links__link"><a href="#">NOSOTROS</a></li>
+                <li class="navbar__links__link"><a href="#">CONTÁCTANOS</a></li>
+            </ul>
+        </nav>
+
+        <div class="banner">
+        </div>
+
+        <div class="carousel">
+            <div class="carousel__container">
+                <div class="carousel__slide">
+                    <img class="carousel__slide__image carousel__slide__image--0" src="/img/fibra-optica.jpg" alt="Fibra optica" id="last-clone">
+                    <img class="carousel__slide__image carousel__slide__image--1" src="/img/man-with-mac.jpg" alt="Man in front of a laptop">
+                    <img class="carousel__slide__image carousel__slide__image--2" src="/img/hardware.jpg" alt="hardware">
+                    <img class="carousel__slide__image carousel__slide__image--3" src="/img/fibra-optica.jpg" alt="Fibra optica" id="first-clone">
+                </div>
+            </div>
+
+            <button class="carousel__controls--left" id="prevBtn"><ion-icon name="chevron-back-outline"></ion-icon></button>
+            <button class="carousel__controls--right" id="nextBtn"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+        </div>
+
+        <div class="slider">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+    </header>
+
+    <script src="/js/carousel.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
