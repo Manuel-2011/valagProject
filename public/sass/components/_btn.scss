@@ -1,0 +1,30 @@
+.btn-carousel {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        background-color: $btn-background-color;
+        padding: 1rem;
+        color: $primary-font-color;
+        border: 0;
+        margin-top: 7rem;
+        border-radius: 1rem;
+        
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 400;
+        box-shadow: 0 1rem 2rem 1rem rgba($shadow-color, .2);
+
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        box-shadow: 0 1rem 3rem 1rem rgba($shadow-color, .2);
+        transform: translateY(-5px);
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2.5rem 1rem rgba($shadow-color, .2);
+        transform: translateY(-2.5px);
+    }
+}

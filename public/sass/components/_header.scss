@@ -1,15 +1,3 @@
 header {
     height: 100vh;
 }
-
-.banner {
-    width: 80%;
-    height: 90vh;
-    margin: 0 auto;
-
-    border-radius: 3px 3px 45rem 3px;
-
-    background-image: linear-gradient(to right, rgba($background-form-color1, 0.8), rgba($background-form-color2, 0.8)), url("../img/man-with-mac.jpg");
-    background-size: cover;
-    background-position: top;
-}
