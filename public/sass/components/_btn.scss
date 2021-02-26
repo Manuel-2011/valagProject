@@ -84,3 +84,43 @@
         }
     }
 }
+
+.btn-card {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        background-color: $btn-background-color;
+        padding: 1rem;
+        color: $primary-font-color;
+        border: 0;
+        border-radius: 1rem;
+        cursor: pointer;
+        outline: none;
+        
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 400;
+        box-shadow: 0 1rem 2rem 1rem rgba($shadow-color, .2);
+
+        transition: all 0.2s;
+
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        box-shadow: 0 1rem 3rem 1rem rgba($shadow-color, .2);
+        transform: translateY(-5px);
+        color: $secondary-font-color;
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2.5rem 1rem rgba($shadow-color, .2);
+        transform: translateY(-2.5px);
+    }
+}

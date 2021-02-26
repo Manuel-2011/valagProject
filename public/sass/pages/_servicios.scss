@@ -2,12 +2,17 @@
     padding: 5rem 4rem;
     margin-bottom: 6rem;
     color: $primary-font-color;
+    height: 100vh;
     
     &__header {
-
+        padding-top: 11rem;
+        margin-bottom: 10rem;
     }
 
     &__body {
-
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat( 4, minmax(10rem, 1fr));
+        gap: 2rem 2rem;
     }
 }
