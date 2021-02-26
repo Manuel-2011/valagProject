@@ -11,7 +11,8 @@ html {
 body {
   box-sizing: border-box;
   color: #979797;
-  font-family: 'Montserrat', sans-serif !important; }
+  font-family: 'Montserrat', sans-serif !important;
+  overflow-x: hidden; }
 
 .carousel-header {
   font-size: 8rem;
