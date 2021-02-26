@@ -31,14 +31,6 @@
         margin: 0;
         height: 100%;
 
-        &__link {
-            position: relative;
-
-            &.active {
-                border-bottom: 3px solid $background-form-color1;
-                color: $background-form-color1;
-            }
-        }
         &__link a,
         &__link a:link,
         &__link a:visited {
@@ -50,6 +42,23 @@
             //font-weight: 300;
             font-size: 3rem;
             padding: 2rem 4rem;
+
+            &:hover {
+                color: $background-form-color2;
+            }
+        }
+
+        &__link {
+            position: relative;
+
+            &.active {
+                border-bottom: 3px solid $background-form-color1;
+                color: $background-form-color1;
+
+                a:hover {
+                    color: $background-form-color1;
+                }
+            }
         }
     }
 } 

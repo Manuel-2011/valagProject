@@ -17,3 +17,29 @@
     letter-spacing: 3px;
     text-align: center;
 }
+
+.footer__header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $secondary-font-color;
+    margin-bottom: 2rem;
+}
+
+.footer__text {
+    font-size: 1.5rem;
+    color: $primary-font-color;
+}
+
+.footer {
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: $secondary-font-color;
+        transition: all .2s;
+
+        &:hover {
+            color: $background-form-color2;
+            font-weight: 700;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+.footer {
+    background: $navbar-color;
+    box-shadow: 0 -1rem 2rem 1rem rgba($shadow-color, .2);
+    padding: 10rem 2rem 2rem 2rem;
+    margin-top: 13rem;
+
+    &__main-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem 5%;
+        width: 80%;
+        margin: auto;
+
+        &__descripcion {
+
+        }
+
+        &__contactanos {
+
+        }
+
+        &__links {
+            &__link {
+                font-size: 5rem;
+
+                &:not(:last-child) {
+                    margin-right: 10%;
+                }
+            }
+        }
+    }
+
+    &__copyright {
+        text-align: center;
+        margin-top: 3rem;
+    }
+}
