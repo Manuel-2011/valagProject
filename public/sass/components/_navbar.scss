@@ -1,8 +1,9 @@
-.navbar {
+.header-navbar {
     width: 100%;
     height: 8rem;
     background-color: $navbar-color;
     padding: 0 5rem;
+    z-index: 10;
 
     position: fixed;
 
@@ -27,22 +28,28 @@
     &__links {
         list-style-type: none;
         display: flex;
+        margin: 0;
+        height: 100%;
 
         &__link {
-            margin-right: 2rem;
             position: relative;
 
             &.active {
                 border-bottom: 3px solid $background-form-color1;
+                color: $background-form-color1;
             }
         }
+        &__link a,
         &__link a:link,
         &__link a:visited {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
             text-decoration: none;
-            margin-right: 2rem;
             color: inherit;
-            font-weight: 300;
-            font-size: 1.5rem;
+            //font-weight: 300;
+            font-size: 3rem;
+            padding: 2rem 4rem;
         }
     }
 } 
