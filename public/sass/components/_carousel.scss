@@ -3,13 +3,13 @@
     position: relative;
 
     @include respond(phone) {
-        // height: 50rem;
+        height: 68rem;
     }
 
     &__container {
         padding-top: 7.9rem;
         width: 100vw;
-        height: 78rem;
+        height: 68rem;
         overflow: hidden;
 
         border-radius: 3px 3px 45rem 3px;
@@ -23,11 +23,11 @@
     &__slide {
         display: flex;
         width: inherit;
-        height: 70rem;
+        height: 100%;
 
         &__sheet {
             width: inherit;
-            height: 70rem;
+            height: 100%;
             background-image: linear-gradient(to right, $background-form-color1, $background-form-color2);
             position: relative;
         }
@@ -36,7 +36,7 @@
             object-fit: cover;
             object-position: center;
             width: inherit;
-            height: 70rem;
+            height: 100%;
             opacity: 0.6;
         }
 
@@ -94,7 +94,7 @@
         transform: translateX(-50%);
 
         @include respond(phone) {
-            // top: 70%;
+            display: none;
         }
     }
 }

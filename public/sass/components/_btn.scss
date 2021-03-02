@@ -59,12 +59,22 @@
         transform: scale(1.2) translateY(-3rem);
         color: $background-form-color2;
         background-color: $btn-background-color;
+
+        @media only screen and (hover:none) {
+            color: $font-color-carousel;
+            background-color: transparent;
+            transform: translateY(-50%);
+        }
     }
 
     &:active {
         color: $background-form-color2;
         transform: scale(1) translateY(-2rem);
         background-color: $btn-background-color;
+
+        @media only screen and (hover:none) {
+            transform: scale(1.2) translateY(-50%);
+        }
     }
 
     &--tabs {

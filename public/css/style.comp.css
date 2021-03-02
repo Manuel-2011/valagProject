@@ -108,11 +108,19 @@ body {
   transform: scale(1.2) translateY(-3rem);
   color: #f80040;
   background-color: #f7f7f7; }
+  @media only screen and (hover: none) {
+    .btn-icon:hover {
+      color: #fff;
+      background-color: transparent;
+      transform: translateY(-50%); } }
 
 .btn-icon:active {
   color: #f80040;
   transform: scale(1) translateY(-2rem);
   background-color: #f7f7f7; }
+  @media only screen and (hover: none) {
+    .btn-icon:active {
+      transform: scale(1.2) translateY(-50%); } }
 
 .btn-icon--tabs {
   padding: 0.3rem;
@@ -162,10 +170,13 @@ body {
 .carousel {
   height: 78rem;
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .carousel {
+      height: 68rem; } }
   .carousel__container {
     padding-top: 7.9rem;
     width: 100vw;
-    height: 78rem;
+    height: 68rem;
     overflow: hidden;
     border-radius: 3px 3px 45rem 3px; }
     @media only screen and (max-width: 37.5em) {
@@ -174,17 +185,17 @@ body {
   .carousel__slide {
     display: flex;
     width: inherit;
-    height: 70rem; }
+    height: 100%; }
     .carousel__slide__sheet {
       width: inherit;
-      height: 70rem;
+      height: 100%;
       background-image: linear-gradient(to right, #1b3679, #f80040);
       position: relative; }
     .carousel__slide__image {
       object-fit: cover;
       object-position: center;
       width: inherit;
-      height: 70rem;
+      height: 100%;
       opacity: 0.6; }
     .carousel__slide__content {
       position: absolute;
@@ -222,6 +233,9 @@ body {
     top: 95%;
     left: 50%;
     transform: translateX(-50%); }
+    @media only screen and (max-width: 37.5em) {
+      .carousel__tabs {
+        display: none; } }
 
 header {
   height: 100vh; }
