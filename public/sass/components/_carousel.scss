@@ -5,6 +5,10 @@
         overflow: hidden;
 
         border-radius: 3px 3px 45rem 3px;
+
+        @include respond(phone) {
+            padding-top: 0rem;
+        }
     }
     
     &__slide {
@@ -52,12 +56,22 @@
         top: 50%;
         transform: translateY(-50%);
 
+        @include respond(phone) {
+            top: 36%;
+        }
+
         &--left {
             left: 13rem;
+            @include respond(phone) {
+                left: 3rem;
+            }
         }
 
         &--right {
             right: 13rem;
+            @include respond(phone) {
+                right: 3rem;
+            }
         }
     }
 
@@ -66,5 +80,9 @@
         top: 85%;
         left: 50%;
         transform: translateX(-50%);
+
+        @include respond(phone) {
+            top: 70%;
+        }
     }
 }

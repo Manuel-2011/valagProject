@@ -75,12 +75,72 @@
     }
 
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
 
     }
 
     &:hover &__side--back {
         transform: rotateY(0);
 
+    }
+
+    @media only screen and (hover:none) {
+        height: auto;
+        border-radius: 2rem;
+        box-shadow: 0 1rem 2rem 1rem rgba($shadow-color, .2);
+        overflow: hidden;
+
+        &__side {
+            transition: none;
+            position: relative;
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+
+            &--front {
+                height: auto;
+            
+                .card__text {
+                    padding: 4rem 1rem;
+                }
+            }
+
+            &--back {
+                transform: rotateY(0);
+                background-image: linear-gradient(to right, $navbar-color, $navbar-color);
+                height: auto;
+
+                .card__header {
+                    height: 2rem;
+                    text-align: center;
+                    margin: -1rem 0;
+                    font-size: 1.7rem;
+                    font-weight: 600;
+                    color: $secondary-font-color;
+                }
+
+                .card__text {
+                    margin: 2rem 0;
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    color: $primary-font-color;
+                }
+            
+                .card__actions {
+                    
+                }
+            
+            }
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(-180deg);
+
+        }
+
+        &:hover &__side--back {
+            transform: rotateY(0);
+
+        }
     }
 }
