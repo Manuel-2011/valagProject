@@ -623,3 +623,29 @@ header {
           margin-bottom: 1rem; }
     .main-benefit__content__actions {
       width: 20rem; }
+
+.links-obligatorios__links {
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  border-top: 1px solid #1b3679;
+  border-bottom: 1px solid #1b3679;
+  padding: 2rem 0; }
+  @media only screen and (max-width: 56.25em) {
+    .links-obligatorios__links {
+      background-color: #fff; } }
+
+.links-obligatorios__imagen {
+  width: 20rem; }
+  @media only screen and (max-width: 56.25em) {
+    .links-obligatorios__imagen {
+      width: 15rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .links-obligatorios__imagen {
+      width: 10rem; } }
+
+.links-obligatorios__link {
+  transition: transform 0.2s ease-out; }
+  .links-obligatorios__link:hover {
+    transform: scale(1.2); }
