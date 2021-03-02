@@ -99,6 +99,7 @@
 
             &--front {
                 height: auto;
+                padding-bottom: 5rem;
             
                 .card__text {
                     padding: 4rem 1rem;
@@ -106,9 +107,12 @@
             }
 
             &--back {
+                clip-path: polygon(50% 18%, 65% 0, 90% 0, 100% 0, 100% 100%, 0 100%, 0 0, 35% 0);
                 transform: rotateY(0);
-                background-image: linear-gradient(to right, $navbar-color, $navbar-color);
+                // background-image: linear-gradient(to right, $navbar-color, $navbar-color);
                 height: auto;
+                margin-top: -5rem;
+                padding: 7rem 2rem 3rem 2rem;
 
                 .card__header {
                     height: 2rem;
@@ -116,14 +120,14 @@
                     margin: -1rem 0;
                     font-size: 1.7rem;
                     font-weight: 600;
-                    color: $secondary-font-color;
+                    // color: $secondary-font-color;
                 }
 
                 .card__text {
                     margin: 2rem 0;
                     padding: 1rem;
                     font-size: 1.5rem;
-                    color: $primary-font-color;
+                    // color: $primary-font-color;
                 }
             
                 .card__actions {
