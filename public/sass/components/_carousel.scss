@@ -9,14 +9,14 @@
     &__container {
         padding-top: 7.9rem;
         width: 100vw;
-        height: 68rem;
+        height: 78rem;
         overflow: hidden;
 
         border-radius: 3px 3px 45rem 3px;
-
+        
         @include respond(phone) {
             border-radius: 3px 3px 20rem 3px;
-            // height: 70rem;
+            height: 68rem;
         }
     }
     
