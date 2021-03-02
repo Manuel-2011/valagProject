@@ -11,6 +11,10 @@
         width: 80%;
         margin: auto;
 
+        @include respond(tab-port) {
+            grid-template-columns: 1fr;
+        }
+
         &__descripcion {
 
         }
