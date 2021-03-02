@@ -18,6 +18,10 @@
         box-shadow: 0 1rem 2rem 1rem rgba($shadow-color, .2);
 
         transition: all 0.2s;
+
+        @include respond(phone) {
+            margin-top: 2rem;
+        }
     }
 
     &:hover {
