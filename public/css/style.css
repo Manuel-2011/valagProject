@@ -64,6 +64,7 @@ body {
     font-weight: 700; }
 
 .btn-carousel, .btn-carousel:link, .btn-carousel:visited {
+  display: inline-block;
   text-decoration: none;
   background-color: #f7f7f7;
   padding: 1rem;
@@ -372,6 +373,9 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .header-navbar__toggle {
     display: none; }
+  .header-navbar__logo-link {
+    display: inline-block;
+    height: 100%; }
   .header-navbar__logo {
     height: 100%; }
   .header-navbar__brand {

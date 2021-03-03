@@ -17,6 +17,11 @@
         display: none;
     }
 
+    &__logo-link {
+        display: inline-block;
+        height: 100%;
+    }
+
     &__logo {
         height: 100%;
     }

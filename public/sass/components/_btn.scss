@@ -2,6 +2,7 @@
     &,
     &:link,
     &:visited {
+        display: inline-block;
         text-decoration: none;
         background-color: $btn-background-color;
         padding: 1rem;
