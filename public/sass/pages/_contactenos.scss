@@ -61,6 +61,13 @@
     &__section-content {
         font-size: 1.6rem;
     }
+
+    &__section-text {
+
+        @include respond(phone) {
+            color: $tertiary-font-color;
+        }
+    }
 }
 
 .map-point {
