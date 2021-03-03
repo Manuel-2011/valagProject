@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALAG | Contactenos</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="header-navbar">
+            <img src="/img/valagLogo.png" alt="Logo de Valag" class="header-navbar__logo">
+            {{!-- <div class="header-navbar__brand">VALAG</div> --}}
+            <ul class="header-navbar__links" id="navbar-content">
+                <li class="header-navbar__links__link tooltip"><a href="/"><ion-icon name="home-outline"></ion-icon></a><span class="tooltiptext">Inicio</span></li>
+                <li class="header-navbar__links__link tooltip"><a href="#"><ion-icon name="business-outline"></ion-icon></a><span class="tooltiptext">Nosotros</span></li>
+                <li class="header-navbar__links__link active tooltip"><a href="/contactenos"><ion-icon name="call"></ion-icon></a><span class="tooltiptext">Contáctanos</span></li>
+            </ul>
+            <div class="header-navbar__toggle" id="navbar-toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-section">
+        <div class="contact-card">
+            <h3 class="contact-card__header">
+                Contáctenos
+            </h3>
+            <div class="contact-card__content">
+                <div class="contact-card__imagen">
+                    <img src="/img/mapa-colombia2.png" alt="Mapa de Colombia" class="contact-card__map">
+                    <div class="map-point map-point--1 tooltip">
+                        <ion-icon name="location"></ion-icon>
+                        <span class="tooltiptext">Bogotá</span>
+                    </div>
+                    <div class="map-point map-point--2 tooltip">
+                        <ion-icon name="location"></ion-icon>
+                        <span class="tooltiptext">Huila</span>
+                    </div>
+                </div>
+                <div class="contact-card__details">
+                    <div class="contact-card__box">
+                        <h3 class="contact-card__section-header">
+                            Linea de atención al cliente
+                        </h3>
+                        <div class="contact-card__section-content">
+                            <div class="contact-card__section-text">
+                                +57 1 7946669
+                            </div>
+                            <div class="contact-card__section-text">
+                                +57 1 7945681
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-card__box">
+                        <h3 class="contact-card__section-header">
+                            Horario de atención
+                        </h3>
+                        <div class="contact-card__section-content">
+                            <div class="contact-card__section-text">
+                                Lunes - Viernes: 08:00am - 06:00pm
+                            </div>
+                            <div class="contact-card__section-text">
+                                Sábado: 08:00am - 06:00pm
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-card__box">
+                        <h3 class="contact-card__section-header">
+                            Oficinas
+                        </h3>
+                        <div class="contact-card__section-content">
+                            <div class="contact-card__section-text">
+                                Cra 55 # 153-15 of: 6-201 Bogotá D.C
+                            </div>
+                            <div class="contact-card__section-text">
+                                Cra 6 # 2 - 63 La Plata - Huila
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+
+    {{!-- Footer --}}
+    {{>footer}}
+
+
+    <script src="/js/navbar.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

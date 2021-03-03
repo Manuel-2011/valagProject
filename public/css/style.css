@@ -238,7 +238,7 @@ body {
       .carousel__tabs {
         display: none; } }
 
-header {
+.main-header {
   height: 100vh; }
 
 .card {
@@ -550,6 +550,69 @@ header {
   top: 500px;
   left: 1500px;
   transform: scale(2); }
+
+.contact-section {
+  padding: 8rem 4rem; }
+
+.contact-card {
+  width: 70rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 4rem 6rem;
+  background: linear-gradient(to bottom right, #f7f7f7, rgba(16, 49, 121, 0.4));
+  border-radius: 5px; }
+  @media only screen and (max-width: 37.5em) {
+    .contact-card {
+      width: 100%; } }
+  .contact-card__header {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #103179;
+    font-weight: 800;
+    margin-bottom: 2rem; }
+  .contact-card__content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .contact-card__content {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center; } }
+  .contact-card__imagen {
+    width: 50%;
+    position: relative; }
+    @media only screen and (max-width: 37.5em) {
+      .contact-card__imagen {
+        width: 40rem; } }
+  .contact-card__map {
+    width: 100%; }
+  .contact-card__details .contact-card__box:not(:last-child) {
+    margin-bottom: 2rem; }
+  .contact-card__section-header {
+    font-size: 2rem; }
+  .contact-card__section-content {
+    font-size: 1.6rem; }
+
+.map-point {
+  position: absolute;
+  color: #103179;
+  font-size: 5rem; }
+  .map-point--1 {
+    top: 15rem;
+    left: 10rem; }
+    @media only screen and (max-width: 37.5em) {
+      .map-point--1 {
+        top: 24rem;
+        left: 14rem; } }
+  .map-point--2 {
+    top: 17rem;
+    left: 7rem; }
+    @media only screen and (max-width: 37.5em) {
+      .map-point--2 {
+        top: 26rem;
+        left: 11rem; } }
 
 .section {
   padding: 5rem 4rem;
