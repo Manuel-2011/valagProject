@@ -1,0 +1,90 @@
+.contact-section {
+    padding: 8rem 4rem;
+}
+
+.contact-card {
+    width: 70rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 4rem 6rem;
+    background: linear-gradient(to bottom right, $btn-background-color, rgba($background-form-color1, .4));
+    border-radius: 5px;
+
+    @include respond(phone) {
+        width: 100%;
+    }
+
+    &__header {
+        text-align: center;
+        font-size: 2.5rem;
+        color: $background-form-color1;
+        font-weight: 800;
+        margin-bottom: 2rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        @include respond(phone) {
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__imagen {
+        width: 50%;
+        position: relative;
+        @include respond(phone) {
+            width: 40rem;
+        }
+    }
+
+    &__map {
+        width: 100%;
+    }
+
+    &__details {
+
+        .contact-card__box:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__section-header {
+        font-size: 2rem;
+    }
+
+    &__section-content {
+        font-size: 1.6rem;
+    }
+}
+
+.map-point {
+    position: absolute;
+    color: $background-form-color1;
+    font-size: 5rem;
+
+    &--1 {
+        top: 15rem;
+        left: 10rem;
+
+        @include respond(phone) {
+            top: 24rem;
+            left: 14rem;
+        }
+    }
+
+    &--2 {
+        top: 17rem;
+        left: 7rem;
+
+        @include respond(phone) {
+            top: 26rem;
+            left: 11rem;
+        }
+    }
+}
