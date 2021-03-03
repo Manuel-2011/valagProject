@@ -22,6 +22,10 @@ app.get('/contactenos', (req, res) => {
     res.render('contactenos')
 })
 
+app.get('/nosotros', (req, res) => {
+    res.render('nosotros')
+})
+
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
 })
