@@ -3,24 +3,31 @@
 }
   
 .tooltip .tooltiptext {
-visibility: hidden;
-width: 12rem;
-background-color: rgba($secondary-font-color, .7);
-color: $btn-background-color;
-text-align: center;
-border-radius: 6px;
-padding: 5px 0;
+    visibility: hidden;
+    width: 12rem;
+    background-color: rgba($secondary-font-color, .7);
+    color: $btn-background-color;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
 
-font-size: 1.5rem;
+    font-size: 1.5rem;
 
-/* Position the tooltip */
-position: absolute;
-z-index: 1;
-top: 110%;
-left: 50%;
-margin-left: -6rem;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 50%;
+    margin-left: -6rem;
+
+    @include respond(phone) {
+        /* Position the tooltip */
+        top: 22%;
+        left: -14%;
+        margin-left: -6rem;
+    }
 }
 
 .tooltip:hover .tooltiptext {
-visibility: visible;
+    visibility: visible;
 }

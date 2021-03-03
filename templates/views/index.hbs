@@ -15,12 +15,16 @@
 
     <header>
         <nav class="header-navbar">
-            <div class="header-navbar__logo">VALAG</div>
-            <ul class="header-navbar__links">
+            <img src="/img/valagLogo.png" alt="Logo de Valag" class="header-navbar__logo">
+            {{!-- <div class="header-navbar__brand">VALAG</div> --}}
+            <ul class="header-navbar__links" id="navbar-content">
                 <li class="header-navbar__links__link active tooltip"><a href="/"><ion-icon name="home"></ion-icon></a><span class="tooltiptext">Inicio</span></li>
                 <li class="header-navbar__links__link tooltip"><a href="#"><ion-icon name="business-outline"></ion-icon></a><span class="tooltiptext">Nosotros</span></li>
                 <li class="header-navbar__links__link tooltip"><a href="#"><ion-icon name="call-outline"></ion-icon></a><span class="tooltiptext">Contáctanos</span></li>
             </ul>
+            <div class="header-navbar__toggle" id="navbar-toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
         </nav>
 
         <div class="carousel">
