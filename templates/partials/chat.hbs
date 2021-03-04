@@ -1,0 +1,47 @@
+
+<ul id="messages"></ul>
+<form id="form" action="">
+  <input id="input" autocomplete="off" /><button>Send</button>
+</form>
+
+
+<form action="" class="chat-client__username-form" id="username-client-form">
+  <input name="username" type="text" id="username-client-input">
+  <label for="username-client-input">Username</label>
+  <button type="submit">Submit</button>
+</form>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  var messages = document.getElementById('messages');
+  var form = document.getElementById('form');
+  var input = document.getElementById('input');
+
+  const usernameClientForm = document.getElementById('username-client-form')
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('sendMessage', { to: {rol: 'support'}, message: input.value});
+      input.value = '';
+    }
+  });
+
+  // Crear chat con soporte
+  usernameClientForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const username = e.target.elements.username.value
+    socket.emit('join', { username, rol: 'client'})
+  })
+
+  socket.on('newMessage', function(msg) {
+    var item = document.createElement('li');
+    item.textContent = msg.text;
+    messages.appendChild(item);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>

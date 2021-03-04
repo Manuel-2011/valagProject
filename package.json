@@ -7,7 +7,6 @@
     "dev": "nodemon src/app.js -e js,hbs",
     "watch:sass": "node-sass public/sass/main.scss public/css/style.css -w",
     "start": "npm-run-all --parallel dev watch:sass",
-
     "compile:sass": "node-sass public/sass/main.scss public/css/style.comp.css",
     "concat:css": "concat -o public/css/style.concat.css public/css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/css/style.concat.css -o public/css/style.prefix.css",
@@ -26,8 +25,11 @@
     "postcss-cli": "^8.3.1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
-    "hbs": "^4.1.1"
+    "hbs": "^4.1.1",
+    "socket.io": "^3.1.2",
+    "socket.io-client": "^3.1.2"
   }
 }

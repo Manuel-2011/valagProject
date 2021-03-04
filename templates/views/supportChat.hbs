@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    CHATTT
+
+    <form action="" class="support-chat__form" id="support-chat__form">
+        <input type="text" name="supportMessage" id="message-input">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        const clientSocketsIds = [] 
+
+        //Entrar a chat de soporte
+        socket.emit('join', { username: 'Carlos', rol: 'support'})
+
+        // Agregar socketId del cliente cuando un cliente se una
+        socket.on('clientJoin', (user) => {
+            clientSocketsIds.push(user.socketId)
+        })
+
+        //Enviar mensaje
+        const supportChatForm = document.getElementById('support-chat__form')
+        supportChatForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const message = e.target.elements.supportMessage.value
+            socket.emit('sendMessage', { to: {rol: 'cliente', socketId: clientSocketsIds[0]}, message })
+        })
+
+
+
+        socket.on('newMessage', function(msg) {
+            console.log(msg)
+        });
+    </script>
+</body>
+</html>
