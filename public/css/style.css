@@ -32,6 +32,9 @@ body {
   letter-spacing: 3px;
   text-align: center;
   margin-bottom: 6rem; }
+  @media only screen and (max-width: 75em) {
+    .carousel-header {
+      font-size: 6rem; } }
 
 .carousel-text {
   font-size: 2.5rem;

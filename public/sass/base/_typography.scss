@@ -4,6 +4,10 @@
     letter-spacing: 3px;
     text-align: center;
     margin-bottom: 6rem;
+
+    @include respond(tab-land) {
+        font-size: 6rem;
+    }
 }
 
 .carousel-text {
