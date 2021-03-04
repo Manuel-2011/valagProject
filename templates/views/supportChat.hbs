@@ -9,6 +9,21 @@
 <body>
     CHATTT
 
+    <div class="sidebar">
+        <ul class="users" id="users">
+
+        </ul>
+    </div>
+
+    <div class="chat-board">
+        <h1 id="chat-board-title">
+            Selecciona a un cliente para iniciar el chat
+        </h1>
+        <div class="" id="messages">
+
+        </div>
+    </div>
+
     <form action="" class="support-chat__form" id="support-chat__form">
         <input type="text" name="supportMessage" id="message-input">
         <button type="submit">Submit</button>
@@ -16,15 +31,52 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        // Elementos
+        const usersList = document.getElementById('users')
+        const chatTitle = document.getElementById('chat-board-title')
+
+        // Helper functions
+        const addTabUserListener = (element, username) => {
+            element.addEventListener('click', () => {
+                chatTitle.innerHTML = username
+            })
+        }
+
+        const createUserTab = ({ username }) => {
+            // Agregar elemento a la lista de usuarios
+            // crear elemento
+            const newUser = document.createElement('li')
+            // agregar clase para estilos y id que es el nombre del canal (socket)
+            newUser.classList.add('users__user')
+            newUser.id = username
+            newUser.innerHTML = username
+            // Agregar elemento a elemento ul
+            usersList.appendChild(newUser)
+            // Agregar click event al nuevo tab
+            addTabUserListener(newUser, username)
+        }
+
+
         var socket = io();
-        const clientSocketsIds = [] 
+        const clients = [] 
 
         //Entrar a chat de soporte
         socket.emit('join', { username: 'Carlos', rol: 'support'})
 
-        // Agregar socketId del cliente cuando un cliente se una
+        // Descargar usuarios activos
+        socket.on('supportJoin', (users) => {
+            users.forEach(user => createUserTab(user))
+        })
+
+        // Cliente crea chat
         socket.on('clientJoin', (user) => {
-            clientSocketsIds.push(user.socketId)
+            createUserTab(user)
+        })
+
+        // Cliente cierra el chat
+        socket.on('clientLeft', (user) => {
+            const userElement = document.getElementById(user.username)
+            userElement.remove()
         })
 
         //Enviar mensaje
@@ -32,12 +84,13 @@
         supportChatForm.addEventListener('submit', (e) => {
             e.preventDefault()
 
+            const username = chatTitle.innerHTML
             const message = e.target.elements.supportMessage.value
-            socket.emit('sendMessage', { to: {rol: 'cliente', socketId: clientSocketsIds[0]}, message })
+            socket.emit('sendMessage', { to: { username, rol: 'client'}, message })
         })
 
 
-
+        // Recibir mensaje
         socket.on('newMessage', function(msg) {
             console.log(msg)
         });

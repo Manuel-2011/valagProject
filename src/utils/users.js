@@ -40,9 +40,17 @@ const getUser = (id) => {
     return users.find((user) => user.id === id)
 }
 
+const getUserByName = (name) => {
+    return users.find((user) => user.username === name)
+}
+
+const getClients = () => users.filter(user => user.rol === 'client')
+
 
 module.exports = {
     addUser,
     removeUser,
     getUser,
+    getUserByName,
+    getClients,
 }

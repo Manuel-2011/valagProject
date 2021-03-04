@@ -3,7 +3,7 @@ const path = require('path')
 const hbs = require('hbs')
 const cors = require('cors');
 const {generateMessage} = require('./utils/messages')
-const { addUser, removeUser, getUser } = require('./utils/users')
+const { addUser, removeUser, getUser, getUserByName, getClients } = require('./utils/users')
 
 const app = express()
 const http = require('http').createServer(app)
@@ -54,36 +54,48 @@ io.on('connection', (socket) => {
         if (user.rol === 'client') {
             socket.join(user.username)
             // Emit the join event for support to know
-            io.to('support').emit('clientJoin', { socketId: socket.id, user})
+            io.to('support').emit('clientJoin', user)
+
+            // Welcome the user
+            socket.emit('newMessage', generateMessage('Valag', 'Bienvenido a Valag, ¿en qué te podemos ayudar?'))
         } else {
             socket.join('support')
+            // Enviar clientes activos al soporte que se unió
+            socket.emit('supportJoin', getClients())
         }
 
 
-        // Welcome the user
-        socket.emit('newMessage', generateMessage('Valag', 'Bienvenido a Valag, ¿en qué te podemos ayudar?'))
+        
     })
 
     // Enviar mensaje
     socket.on('sendMessage', ({ to, message }) => {
-    const from = getUser(socket.id)
-    
-    let client
-    if (to.rol === 'cliente') {
-        client = getUser(to.socketId)
-    } else {
-        client = from
-    }
+        const from = getUser(socket.id)
+        
+        // Definir quien es el cliente para saber el nombre del canal privado cliente-soporte
+        let client
+        if (to.rol === 'client') {
+            client =  getUserByName(to.username)
+        } else {
+            client = from
+        }
 
-
-
-    // Enviar mensaje a cliente
-    io.to(client.username).emit('newMessage', generateMessage(from.username, message))
-    // Enviar mensaje a soporte
-    io.to('support').emit('newMessage', generateMessage(from.username, message))
-
-
+        // Enviar mensaje a cliente
+        io.to(client.username).emit('newMessage', generateMessage(from.username, message))
+        // Enviar mensaje a soporte
+        io.to('support').emit('newMessage', generateMessage(from.username, message))
     });
+
+    // Usuario se desconecta
+    socket.on('disconnect', () => {
+        const user = removeUser(socket.id)
+    
+        if (user) {
+            if (user.rol === 'client') {
+                io.to('support').emit('clientLeft', user)
+            }
+        }
+    })
   });
 
 
