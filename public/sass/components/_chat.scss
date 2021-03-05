@@ -1,0 +1,211 @@
+.client-chat {
+    position: fixed;
+    bottom: 0;
+    right: 3rem;
+    width: 30rem;
+    background-color: $background-form-color1;
+
+    border: 1.5rem solid #103179;
+    border-bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+
+    &__controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__close {
+        color: $font-color-carousel;
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__open {
+        display: none;
+        color: $font-color-carousel;
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__header {
+        font-size: 2rem;
+        color: $font-color-carousel;
+        font-weight: 200;
+        margin-bottom: 0.5rem;
+    }
+
+    &__chat-board {
+        height: 20rem;
+        background-color: $btn-background-color;
+        overflow-y: scroll;
+        padding: 1rem;
+    }
+
+    &__message-form {
+        min-height: .5rem;
+        position: static;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto 6rem;
+
+        box-shadow: 0 -1rem 2rem rgba($shadow-color, .2);
+    }
+
+    &__message-input {
+        font-family: inherit;
+        padding: 1rem;
+        border: 0;
+        border-bottom: 3px solid transparent;
+
+        &:focus {
+            border-bottom: 3px solid $green-primary;
+            outline: none;
+        }
+    }
+
+    &__message-submit {
+        font-family: inherit;
+        background-color: $green-primary;
+        color: $font-color-carousel;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__username-form {
+        height: 20.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__username-label {
+        text-align: center;
+        color: $font-color-carousel;
+        font-size: 2rem;
+    }
+
+    &__username-input {
+        padding: 1rem;
+        font-size: 1.4rem;
+        font-family: inherit;
+        border-radius: 3px;
+        border: 0;
+        margin: 1rem 0;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 3rem rgba($background-color, .5);
+        }
+    }
+
+    &__username-submit {
+        font-size: 1.5rem;
+        display: inline-block;
+    }
+
+    // Mensajes del chat
+    &__message-box {
+        display: flex;
+
+        &--client {
+            justify-content: flex-end;
+        }
+
+        &--support {
+            justify-content: flex-start;
+        }
+    }
+
+    &__message {
+        padding: 2rem;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 1rem;
+
+        &--client {
+            margin-left: 3rem;
+            background-color: rgba($background-form-color1, .2);
+        }
+
+        &--support {
+            margin-right: 3rem;
+            background-color: rgba($green-light, .2);        
+        }
+    }
+
+    // Chat antes de haber ingresado el nombre de usuario
+    &.username {
+        .client-chat {
+            &__username-form {
+                display: flex;
+            }
+
+            &__chat-board {
+                display: none;
+            }
+
+            &__message-form {
+                display: none;
+            }
+        }
+    }
+
+    // Chat despues de haber ingresado el nombre de usuario
+    &.chat {
+        .client-chat {
+            &__username-form {
+                display: none;
+            }
+
+            &__chat-board {
+                display: block;
+            }
+
+            &__message-form {
+                display: grid;
+            }
+        }
+    }
+
+    // Ventana de chat minimizada
+    &.minimized {
+        .client-chat {
+            &__username-form {
+                display: none;
+            }
+
+            &__chat-board {
+                display: none;
+            }
+
+            &__message-form {
+                display: none;
+            }
+
+            &__open {
+                display: inline-block;
+            }
+
+            &__close {
+                display: none;
+            }
+        }
+    }
+}

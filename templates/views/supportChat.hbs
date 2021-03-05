@@ -28,8 +28,8 @@
             </div>
 
             <form action="" class="support-chat-form" id="support-chat__form">
-                <input class="support-chat-form__input" type="text" name="supportMessage" id="message-input">
-                <button class="support-chat-form__submit" type="submit">Enviar</button>
+                <input class="support-chat-form__input" type="text" name="supportMessage" id="message-input" autocomplete="off">
+                <button class="support-chat-form__submit" type="submit" id="support-send-btn">Enviar</button>
             </form>
         </div>
     </div>
@@ -40,6 +40,7 @@
         const usersList = document.getElementById('users')
         const chatTitle = document.getElementById('chat-board-title')
         const chat = document.getElementById('messages')
+        const supportSendBtn = document.getElementById('support-send-btn')
 
         // Helper functions
 
@@ -50,6 +51,9 @@
                 loadMessages(username)
                 // Eliminar notificaciones
                 deleteNotification(username)
+
+                //Activar botón para enviar mensajes
+                supportSendBtn.disabled = false
             })
         }
 
@@ -86,6 +90,9 @@
             // Agregar mensaje al chat
             messageBox.appendChild(newMessage)
             chat.appendChild(messageBox)
+
+            //auto scroll
+            autoscroll()
         }
 
         const addNotification = (username) => {
@@ -117,9 +124,33 @@
             chat.innerHTML = ''
         }
 
+        const autoscroll = () => {
+            // New message element
+            const newMessage = chat.lastElementChild
+
+            // Height of the new message
+            const newMessageHeight = newMessage.offsetHeight
+
+            // Visible height
+            const visibleHeight = chat.offsetHeight
+
+            // Height of messages container
+            const containerHeight = chat.scrollHeight
+
+            // How far have i scrolled?
+            const scrollOffset = chat.scrollTop + visibleHeight
+
+            if (containerHeight - newMessageHeight <= scrollOffset) {
+                chat.scrollTop = chat.scrollHeight
+            }
+        }
+
 
         var socket = io();
         const clients = [] 
+
+        //deshabilitar boton de enviar
+        supportSendBtn.disabled = true
 
         //Entrar a chat de soporte
         socket.emit('join', { username: 'Carlos', rol: 'support'})
@@ -155,7 +186,14 @@
 
             const username = chatTitle.innerHTML
             const message = e.target.elements.supportMessage.value
-            socket.emit('sendMessage', { to: { username, rol: 'client'}, message })
+            if (message) {
+                socket.emit('sendMessage', { to: { username, rol: 'client'}, message }, (error) => {
+                    if (error) {
+                        return addNewMessage({text: error})
+                    }
+                })
+                e.target.elements.supportMessage.value = ''
+            }
         })
 
 

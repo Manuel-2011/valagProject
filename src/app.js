@@ -69,26 +69,31 @@ io.on('connection', (socket) => {
     })
 
     // Enviar mensaje
-    socket.on('sendMessage', ({ to, message }) => {
+    socket.on('sendMessage', ({ to, message }, callback) => {
         const from = getUser(socket.id)
         
         // Definir quien es el cliente para saber el nombre del canal privado cliente-soporte
         let client
-        if (to.rol === 'client') {
-            client =  getUserByName(to.username)
+        try {
+            if (to.rol === 'client') {
+                client =  getUserByName(to.username)
+    
+                 // Enviar mensaje a cliente
+                io.to(client.username).emit('newMessage', generateMessage(from.username, message))
+                // Enviar mensaje a soporte
+                io.to('support').emit('newMessage', generateMessage(from.username, message, client.username))
+            } else {
+                client = from
+                 // Enviar mensaje a cliente
+                 io.to(client.username).emit('newMessage', generateMessage(from.username, message))
+                 // Enviar mensaje a soporte
+                 io.to('support').emit('newMessage', generateMessage(from.username, message))
+            }
 
-             // Enviar mensaje a cliente
-            io.to(client.username).emit('newMessage', generateMessage(from.username, message))
-            // Enviar mensaje a soporte
-            io.to('support').emit('newMessage', generateMessage(from.username, message, client.username))
-        } else {
-            client = from
-             // Enviar mensaje a cliente
-             io.to(client.username).emit('newMessage', generateMessage(from.username, message))
-             // Enviar mensaje a soporte
-             io.to('support').emit('newMessage', generateMessage(from.username, message))
+            callback()
+        } catch (error) {
+            callback(error)
         }
-
        
     });
 

@@ -7,7 +7,7 @@ const addUser = ({ id, username, rol}) => {
     // Validate tha data
     if (!username) {
         return {
-            error: 'Username is required!'
+            error: 'El nombre de usuario es requerido'
         }
     }
 
@@ -19,7 +19,7 @@ const addUser = ({ id, username, rol}) => {
     // Validate username
     if (existingUser) {
         return {
-            error: 'Username is in use!'
+            error: 'UsernameInvalid'
         }
     }
 

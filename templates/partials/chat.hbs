@@ -1,47 +1,159 @@
+<div class="client-chat username minimized" id="client-chat-tab">
+  <div class="client-chat__controls">
+    <button class="client-chat__close" id="client-chat-close">&times;</button>
+    <button class="client-chat__open" id="client-chat-open"><ion-icon name="caret-up"></ion-icon></button>
+  </div>
+  <div class="client-chat__header">Chatea con un asesor</div>
+  <div class="client-chat__chat-board" id="messages"></div>
+  <form class="client-chat__message-form" id="form" action="">
+    <input class="client-chat__message-input" id="input" autocomplete="off" />
+    <button class="client-chat__message-submit" type="submit">Enviar <ion-icon name="send"></ion-icon></button>
+  </form>
 
-<ul id="messages"></ul>
-<form id="form" action="">
-  <input id="input" autocomplete="off" /><button>Send</button>
-</form>
 
+  <form action="" class="client-chat__username-form" id="username-client-form">
+    <label class="client-chat__username-label" for="username-client-input">Usuario</label>
+    <input class="client-chat__username-input" name="username" type="text" id="username-client-input" placeholder="Pon tu nombre para iniciar el chat">
+    <button class="client-chat__username-submit btn-card" type="submit">Enviar</button>
+  </form>
 
-<form action="" class="chat-client__username-form" id="username-client-form">
-  <input name="username" type="text" id="username-client-input">
-  <label for="username-client-input">Username</label>
-  <button type="submit">Submit</button>
-</form>
-
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
+  let username
 
-  var messages = document.getElementById('messages');
-  var form = document.getElementById('form');
-  var input = document.getElementById('input');
+  // Elementos
+  const chatTab = document.getElementById('client-chat-tab')
+  const clientChat = document.getElementById('messages');
+  const clientMessageForm = document.getElementById('form');
+  const clientMessageInput = document.getElementById('input');
 
   const usernameClientForm = document.getElementById('username-client-form')
 
+  const closeClientChat = document.getElementById('client-chat-close')
+  const openClientChat = document.getElementById('client-chat-open')
+
+  // Helper function
+  const clientAddNewMessage = (message, username) => {
+      const messageBox = document.createElement('div')
+      messageBox.classList.add('client-chat__message-box')
+
+      const newMessage = document.createElement('p')
+      newMessage.classList.add('client-chat__message')
+      // Agregar clase a elemento dependiendo si es el cliente o soporte
+      if (message.username === username) {
+          messageBox.classList.add('client-chat__message-box--client')
+          newMessage.classList.add('client-chat__message--client')
+      } else {
+          messageBox.classList.add('client-chat__message-box--support')
+          newMessage.classList.add('client-chat__message--support')
+      }
+      // Agregar contenido del texto
+      newMessage.innerHTML = message.text
+      // Agregar mensaje al chat
+      messageBox.appendChild(newMessage)
+      clientChat.appendChild(messageBox)
+      //auto scroll
+      autoscroll()
+  }
+
+  const autoscroll = () => {
+    // New message element
+    const newMessage = clientChat.lastElementChild
+
+    // Height of the new message
+    const newMessageHeight = newMessage.offsetHeight
+
+    // Visible height
+    const visibleHeight = clientChat.offsetHeight
+
+    // Height of messages container
+    const containerHeight = clientChat.scrollHeight
+
+    // How far have i scrolled?
+    const scrollOffset = clientChat.scrollTop + visibleHeight
+
+    if (containerHeight - newMessageHeight <= scrollOffset) {
+        clientChat.scrollTop = clientChat.scrollHeight
+    }
+  }
+
+  // Event listener de enviar mensaje
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (input.value) {
-      socket.emit('sendMessage', { to: {rol: 'support'}, message: input.value});
-      input.value = '';
+      socket.emit('sendMessage', { to: {rol: 'support'}, message: input.value}, (error) => {
+        input.value = '';
+
+        if (error) {
+          if (error === 'UsernameInvalid') {
+            return clientAddNewMessage({text: 'Lo siento! Solo puede tener un chat activo al tiempo. Regrese a la anterior pestaña!'})
+          }
+          return
+        }
+      });
+      
     }
   });
 
-  // Crear chat con soporte
+  //Revisar si hay nombre de usuario guardado
+  if (!username) {
+    const userSaved = localStorage.getItem('valag-username')
+    if (userSaved) {
+      username = userSaved
+      // esconder la username-form y mostrar el chat
+      chatTab.classList.remove('username')
+      chatTab.classList.add('chat')
+
+      // crear el chat con soporte
+      socket.emit('join', { username, rol: 'client'}, (error) => {
+        if (error) {
+          if (error === 'UsernameInvalid') {
+            return clientAddNewMessage({text: 'Lo siento! Solo puede tener un chat activo al tiempo. Regrese a la anterior pestaña!'})
+          }
+          return
+        }
+      })
+    }
+  }
+
+  // Submit username form del chat
   usernameClientForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const username = e.target.elements.username.value
-    socket.emit('join', { username, rol: 'client'})
+    username = e.target.elements.username.value
+    // crear el chat con soporte
+    socket.emit('join', { username, rol: 'client'}, (error) => {
+      if (error) {
+        if (error === 'UsernameInvalid') {
+          return clientAddNewMessage({text: 'El nombre de usuario está en uso. Por favor pruebe con otro!'})
+        }
+      }
+    })
+
+    // esconder la username-form y mostrar el chat
+    chatTab.classList.remove('username')
+    chatTab.classList.add('chat')
+
+    //guardar nombre en el local storage
+    localStorage.setItem('valag-username', username)
   })
 
   socket.on('newMessage', function(msg) {
-    var item = document.createElement('li');
-    item.textContent = msg.text;
-    messages.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
+    clientAddNewMessage(msg, username)
   });
+
+
+  // MINIMIZAR Y AMPLIAR VENTANA DE CHAT
+
+  // ampliar ventana de chat
+  openClientChat.addEventListener('click', () => {
+    chatTab.classList.remove('minimized')
+  })
+  // minimizar ventana de chat
+  closeClientChat.addEventListener('click', () => {
+    chatTab.classList.add('minimized')
+  })
 </script>
