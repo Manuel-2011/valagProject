@@ -76,14 +76,20 @@ io.on('connection', (socket) => {
         let client
         if (to.rol === 'client') {
             client =  getUserByName(to.username)
+
+             // Enviar mensaje a cliente
+            io.to(client.username).emit('newMessage', generateMessage(from.username, message))
+            // Enviar mensaje a soporte
+            io.to('support').emit('newMessage', generateMessage(from.username, message, client.username))
         } else {
             client = from
+             // Enviar mensaje a cliente
+             io.to(client.username).emit('newMessage', generateMessage(from.username, message))
+             // Enviar mensaje a soporte
+             io.to('support').emit('newMessage', generateMessage(from.username, message))
         }
 
-        // Enviar mensaje a cliente
-        io.to(client.username).emit('newMessage', generateMessage(from.username, message))
-        // Enviar mensaje a soporte
-        io.to('support').emit('newMessage', generateMessage(from.username, message))
+       
     });
 
     // Usuario se desconecta
