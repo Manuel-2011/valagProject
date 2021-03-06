@@ -255,6 +255,9 @@ body {
     position: absolute;
     top: 0;
     right: 0; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__controls {
+        top: 1rem; } }
   .client-chat__close {
     color: #fff;
     background-color: transparent;
@@ -264,6 +267,10 @@ body {
     line-height: 1; }
     .client-chat__close:focus {
       outline: none; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__close {
+        font-size: 4rem;
+        right: 1rem; } }
   .client-chat__open {
     display: none;
     color: #fff;
@@ -274,12 +281,19 @@ body {
     line-height: 1; }
     .client-chat__open:focus {
       outline: none; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__open {
+        font-size: 4rem; } }
   .client-chat__header {
     font-size: 2rem;
     color: #fff;
     font-weight: 200;
     margin-bottom: 0.5rem;
     cursor: pointer; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__header {
+        font-size: 3rem;
+        padding: 1rem 0; } }
   .client-chat__chat-board {
     height: 26rem;
     background-color: #f7f7f7;

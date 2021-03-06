@@ -17,6 +17,9 @@
         position: absolute;
         top: 0;
         right: 0;
+        @include respond(phone) {
+            top: 1rem;
+        }
     }
 
     &__close {
@@ -29,6 +32,11 @@
 
         &:focus {
             outline: none;
+        }
+
+        @include respond(phone) {
+            font-size: 4rem;
+            right: 1rem;
         }
     }
 
@@ -44,6 +52,10 @@
         &:focus {
             outline: none;
         }
+
+        @include respond(phone) {
+            font-size: 4rem;
+        }
     }
 
     &__header {
@@ -52,6 +64,11 @@
         font-weight: 200;
         margin-bottom: 0.5rem;
         cursor: pointer;
+
+        @include respond(phone) {
+            font-size: 3rem;
+            padding: 1rem 0;
+        }
     }
 
     &__chat-board {
