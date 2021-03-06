@@ -4,7 +4,7 @@
     </h2>
     <div class="section__body">
         <div class="servicios-panel">
-        <div class="card">
+        <div class="card" id="servicios-isp">
             <div class="card__side card__side--front">
                 <img src="../img/router-wifi.jpg" alt="Wifi router" class="card__image">
                 <h3 class="card__header">
@@ -19,14 +19,14 @@
                     ¿Quieres conocer más sobre este servicio?
                 </h4>
                 <p class="card__text">
-                    Contacta a uno de nuestros asesores!
+                    Dale 'click' para ver más información!
                 </p>
                 <div class="card__actions">
-                    <a class="btn-card" href="/contactenos"><span>Ir a contáctanos</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
+                    <a class="btn-card" href="#modal-servicios-isp"><span>Conoce más</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="redes-electricas">
             <div class="card__side card__side--front">
                 <img src="../img/cyber-security.jpg" alt="Seguridad informatica" class="card__image">
                 <h3 class="card__header">
@@ -41,14 +41,14 @@
                     ¿Quieres conocer más sobre este servicio?
                 </h4>
                 <p class="card__text">
-                    Contacta a uno de nuestros asesores!
+                    Dale 'click' para ver más información!
                 </p>
                 <div class="card__actions">
-                    <a class="btn-card" href="/contactenos"><span>Ir a contáctanos</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
+                    <a class="btn-card" href="/#modal-redes-electricas"><span>Conoce más</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="redes-corporativas">
             <div class="card__side card__side--front">
                 <img src="../img/callcenter-solutions.jpg" alt="Wifi router" class="card__image">
                 <h3 class="card__header">
@@ -63,14 +63,14 @@
                     ¿Quieres conocer más sobre este servicio?
                 </h4>
                 <p class="card__text">
-                    Contacta a uno de nuestros asesores!
+                    Dale 'click' para ver más información!
                 </p>
                 <div class="card__actions">
-                    <a class="btn-card" href="/contactenos"><span>Ir a contáctanos</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
+                    <a class="btn-card" href="#modal-redes-corporativas"><span>Conoce más</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="plataformas-de-red">
             <div class="card__side card__side--front">
                 <img src="../img/desarrollo-de-software.jpg" alt="Wifi router" class="card__image">
                 <h3 class="card__header">
@@ -85,14 +85,14 @@
                     ¿Quieres conocer más sobre este servicio?
                 </h4>
                 <p class="card__text">
-                    Contacta a uno de nuestros asesores!
+                    Dale 'click' para ver más información!
                 </p>
                 <div class="card__actions">
-                    <a class="btn-card" href="/contactenos"><span>Ir a contáctanos</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
+                    <a class="btn-card" href="#modal-plataformas-de-red"><span>Conoce más</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="comunicaciones-unificadas">
             <div class="card__side card__side--front">
                 <img src="../img/desarrollo-de-software.jpg" alt="Wifi router" class="card__image">
                 <h3 class="card__header">
@@ -107,10 +107,10 @@
                     ¿Quieres conocer más sobre este servicio?
                 </h4>
                 <p class="card__text">
-                    Contacta a uno de nuestros asesores!
+                    Dale 'click' para ver más información!
                 </p>
                 <div class="card__actions">
-                    <a class="btn-card" href="/contactenos"><span>Ir a contáctanos</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
+                    <a class="btn-card" href="#modal-comunicaciones-unificadas"><span>Conoce más</span><ion-icon name="chevron-forward-circle-outline"></ion-icon></a>
                 </div>
             </div>
         </div>
@@ -161,3 +161,253 @@
         </div>
     </div>
 </main>
+
+
+{{!-- Modals for more information on the service --}}
+
+<div class="modal" id="modal-servicios-isp">
+    <div class="modal__content">
+        <a name="closeLink" href="#servicios-isp" class="modal__close">&times;</a>
+        <h2 class="modal__header">
+            Proveedor de servicios de internet (ISP)
+        </h2>
+        <div class="modal__block">
+            <div class="modal__text">
+                <p class="modal__paragraph">
+                    Contamos con un amplio portafolio de soluciones en conectividad somos un proveedor de servicios de Internet (ISP), telefonía IP, video, servicios en la nube, datacenter y seguridad que lo apoyaran en la optimización de sus recursos de tecnología.
+                </p>
+            </div>
+        </div>
+        
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Diseñamos, implementamos y configuramos redes de datos y voz corporativas.
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Diseño de topologías de red a gran escala, desde pequeñas a grandes empresas.
+                    </li>
+                    <li class="modal__list-item">
+                        Redes cableadas de datos y voz del tipo Categoría 5e, 6, 6a, 7.
+                    </li>
+                    <li class="modal__list-item">
+                        Configuración de topologías de red sobre dispositivos de red como Routers, Switches, etc.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__link-box">
+            <a href="/contactenos" class="btn-card">Contáctenos</a>
+        </div>     
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-redes-electricas">
+    <div class="modal__content">
+        <a name="closeLink" href="#servicios-isp" class="modal__close">&times;</a>
+        <h2 class="modal__header">
+            Diseñamos, implementamos redes eléctricas, iluminación, acometidas eléctricas.
+        </h2>
+        
+        <div class="modal__block">
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Suministro e instalación de soluciones en media y baja tensión, conductores, conectividad y aislamientos en las redes de distribución.
+                    </li>
+                    <li class="modal__list-item">
+                        Soluciones de iluminación ajustadas a las necesidades presentadas en su empresa.
+                    </li>
+                    <li class="modal__list-item">
+                        Estudio y diseño de redes eléctricas.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__link-box">
+            <a href="/contactenos" class="btn-card">Contáctenos</a>
+        </div>     
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-redes-corporativas">
+    <div class="modal__content">
+        <a name="closeLink" href="#servicios-isp" class="modal__close">&times;</a>
+        <h2 class="modal__header">
+            Redes corporativas
+        </h2>
+        
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Redes cableadas
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Nuestro objetivo es proporcionar al cliente una red cableada con la última tecnología y siguiendo todos los protocolos y estándares internacionales para el diseño e implementación de las mismas. 
+                    </li>
+                    <li class="modal__list-item">
+                        Contamos con certificaciones de los principales proveedores de tecnología del mercado.
+                    </li>
+                    <li class="modal__list-item">
+                        Nuestras implementaciones cuentan con todas las políticas de calidad aplicables.
+                    </li>
+                    <li class="modal__list-item">
+                        Nuestros ingenieros están altamente capacitados y certificados.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Redes inalámbricas
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Nuestra alianza con los principales proveedores de soluciones inalámbricas nos permite ofrecer a nuestros clientes soluciones robustas y de alta competencia.
+                    </li>
+                    <li class="modal__list-item">
+                        Nuestro área técnica y proyectos nos permite que podamos brindar un servicio en todas las etapas, incluyendo diseño, instalación, configuración y acompañamiento.
+                    </li>
+                    <li class="modal__list-item">
+                        Nuestras soluciones inalámbricas son tanto para pequeñas empresas o hogares (soluciones wifi) como comunicaciones a grandes distancias o esquemas tipo malla (enlaces de radio, man’s, lan extendida, etc).
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Servicios plataformas de red
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Dentro de nuestro portafolio de productos ofrecemos soluciones llave en mano, incluyendo la configuración de dispositivos de red tales como Routers, Switches, etc.
+                        <ul class="modal__sublist">
+                            <li class="modal__list-item">
+                                Diseñamos e implementamos redes de datos y voz. 
+                            </li>
+                            <li class="modal__list-item">
+                                Configuración de redes en capa 2 y capa 3.
+                            </li>
+                            <li class="modal__list-item">
+                                Seguridad de redes aplicando diferentes tipos de políticas.
+                            </li>
+                            <li class="modal__list-item">
+                                Calidad de servicio sobre redes. 
+                            </li>
+                            <li class="modal__list-item">
+                                Voz sobre IP.
+                            </li>
+                            <li class="modal__list-item">
+                                CCTV, sistema de intrusión y acceso.
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="modal__list-item">
+                        Implementamos seguridad de redes sobre dispositivos basados en diferentes sistemas, tales como Cisco, Linux o Windows.
+                    </li>
+                    <li class="modal__list-item">
+                        Contamos con ingenieros certificados en diferentes plataformas como CCNA, LPIC, MSCE y otros.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__link-box">
+            <a href="/contactenos" class="btn-card">Contáctenos</a>
+        </div>     
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-plataformas-de-red">
+    <div class="modal__content">
+        <a name="closeLink" href="#servicios-isp" class="modal__close">&times;</a>
+        <h2 class="modal__header">
+            Plataformas de red
+        </h2>
+       
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Implementamos diferentes tipos de servicio sobre redes corporativas utilizando plataformas estándares como Linux y/o Windows.
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Implementación de sistemas de Directorio Activo sobre Windows o Linux (Samba 3 o Samba 4).
+                    </li>
+                    <li class="modal__list-item">
+                        Implementación de sistemas de Firewall sobre Linux o diferentes Appliances como Cisco, Barracuda y otros.
+                    </li>
+                    <li class="modal__list-item">
+                        Implementación de soluciones de correo corporativo utilizando herramientas privadas como MS Exchange o soluciones de código libre basadas en Linux.
+                    </li>
+                    <li class="modal__list-item">
+                        Implementación de soluciones de chat corporativo sobre sistemas de código libre.
+                    </li>
+                    <li class="modal__list-item">
+                        Soluciones de acceso a Internet, incluyendo esquemas de servidores PROXY, acceso tipo HOT SPOT para Wifi, autenticación usuarios integrada con el directorio activo y otros.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__link-box">
+            <a href="/contactenos" class="btn-card">Contáctenos</a>
+        </div>     
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-comunicaciones-unificadas">
+    <div class="modal__content">
+        <a name="closeLink" href="#servicios-isp" class="modal__close">&times;</a>
+        <h2 class="modal__header">
+            Comunicaciones unificadas
+        </h2>
+       
+        <div class="modal__block">
+            <h2 class="modal__subheader">
+                Experiencia en el diseño e implementación de sistemas de comunicaciones unificadas basadas en tecnología sobre IP nos permiten ofrecer a nuestros clientes una amplia gama de productos que se pueden adecuar a sus necesidades.
+            </h2>
+            <div class="modal__text">
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        Desarrollamos sistemas a la medida para diferentes tipos de aplicaciones.
+                    </li>
+                    <li class="modal__list-item">
+                        Experiencia en soluciones de telefonía IP sobre sistemas Cisco, Asterisk, Freeswitch y Panasonic. Podemos integrar varias tecnologías para suplir las necesidades de nuestros clientes.
+                    </li>
+                    <li class="modal__list-item">
+                        Implementación de soluciones de telefonía IP y comunicaciones unificadas basadas en Cisco tanto para pequeñas como para grandes empresas.
+                    </li>
+                    <li class="modal__list-item">
+                        Implementación de soluciones corporativas de telefonía IP y comunicaciones unificadas a la medida sobre sistemas de código libre como Asterisk y Freeswitch, incluyendo distribuciones como Elastix, FreePBX, PBX In A Flash y desarrollos propios.
+                    </li>
+                    <li class="modal__list-item">
+                        Desarrollamos soluciones integrales de código libre a la medida del cliente, contamos con desarrollos propios de sistemas PBX, Softphone y otros.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal__link-box">
+            <a href="/contactenos" class="btn-card">Contáctenos</a>
+        </div>     
+    </div>
+</div>
+
+<script src="/js/modals.js"></script>

@@ -1,0 +1,97 @@
+.modal {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($shadow-color, .8);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($shadow-color, .3);
+    }
+
+    &__content {
+        @include absoluteCenter;
+
+        max-height: 80vh;
+        overflow-y: scroll;
+        width: 75%;
+        padding: 2rem 3rem;
+        background-color: $background-color;
+        box-shadow: 0 2rem 4rem rgba($shadow-color, .2);
+        border-radius: 3px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s;
+        font-size: 1.5rem;
+    }
+
+    &__header {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $secondary-font-color;
+    }
+
+    &__subheader {
+        margin-bottom: 1rem;
+    }
+
+    &__block {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__list {
+        margin-left: 2rem;
+    }
+
+    &__sublist {
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__link-box {
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+
+
+    //Open states
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            color: $secondary-font-color;
+            position: absolute;
+            top: 0.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;
+        }
+
+        &:hover {
+            color: $red-color;
+        }
+    }
+}
