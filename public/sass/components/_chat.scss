@@ -2,12 +2,16 @@
     position: fixed;
     bottom: 0;
     right: 3rem;
-    width: 30rem;
+    width: 45rem;
     background-color: $background-form-color1;
 
     border: 1.5rem solid #103179;
     border-bottom: 0;
     border-radius: 1rem 1rem 0 0;
+
+    @include respond(phone) {
+        width: 90%;
+    }
 
     &__controls {
         position: absolute;
@@ -47,10 +51,11 @@
         color: $font-color-carousel;
         font-weight: 200;
         margin-bottom: 0.5rem;
+        cursor: pointer;
     }
 
     &__chat-board {
-        height: 20rem;
+        height: 26rem;
         background-color: $btn-background-color;
         overflow-y: scroll;
         padding: 1rem;
@@ -63,7 +68,7 @@
         left: 0;
         width: 100%;
         display: grid;
-        grid-template-columns: auto 6rem;
+        grid-template-columns: auto 8rem;
 
         box-shadow: 0 -1rem 2rem rgba($shadow-color, .2);
     }
@@ -86,6 +91,7 @@
         color: $font-color-carousel;
         border: 0;
         cursor: pointer;
+        font-size: 1.5rem;
     }
 
     &__username-form {
@@ -120,6 +126,11 @@
         display: inline-block;
     }
 
+    &__username-error {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
     // Mensajes del chat
     &__message-box {
         display: flex;
@@ -138,6 +149,8 @@
         border-radius: 5px;
         display: inline-block;
         margin-bottom: 1rem;
+        color: $secondary-font-color;
+        font-size: 1.5rem;
 
         &--client {
             margin-left: 3rem;

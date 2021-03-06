@@ -64,8 +64,7 @@ io.on('connection', (socket) => {
             socket.emit('supportJoin', getClients())
         }
 
-
-        
+        callback()
     })
 
     // Enviar mensaje

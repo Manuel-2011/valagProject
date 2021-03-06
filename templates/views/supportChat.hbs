@@ -153,7 +153,9 @@
         supportSendBtn.disabled = true
 
         //Entrar a chat de soporte
-        socket.emit('join', { username: 'Carlos', rol: 'support'})
+        socket.emit('join', { username: 'Carlos', rol: 'support'}, (error) => {
+            return addNewMessage({ text: error })
+        })
 
         // Descargar usuarios activos
         socket.on('supportJoin', (users) => {

@@ -3,7 +3,7 @@
     <button class="client-chat__close" id="client-chat-close">&times;</button>
     <button class="client-chat__open" id="client-chat-open"><ion-icon name="caret-up"></ion-icon></button>
   </div>
-  <div class="client-chat__header">Chatea con un asesor</div>
+  <div class="client-chat__header" id="client-chat-header">Chatea con un asesor</div>
   <div class="client-chat__chat-board" id="messages"></div>
   <form class="client-chat__message-form" id="form" action="">
     <input class="client-chat__message-input" id="input" autocomplete="off" />
@@ -14,6 +14,7 @@
   <form action="" class="client-chat__username-form" id="username-client-form">
     <label class="client-chat__username-label" for="username-client-input">Usuario</label>
     <input class="client-chat__username-input" name="username" type="text" id="username-client-input" placeholder="Pon tu nombre para iniciar el chat">
+    <div class="client-chat__username-error" id="client-chat-username-error"></div>
     <button class="client-chat__username-submit btn-card" type="submit">Enviar</button>
   </form>
 
@@ -31,9 +32,11 @@
   const clientMessageInput = document.getElementById('input');
 
   const usernameClientForm = document.getElementById('username-client-form')
+  const usernameClientError = document.getElementById('client-chat-username-error')
 
   const closeClientChat = document.getElementById('client-chat-close')
   const openClientChat = document.getElementById('client-chat-open')
+  const headerClientChat = document.getElementById('client-chat-header')
 
   // Helper function
   const clientAddNewMessage = (message, username) => {
@@ -128,17 +131,17 @@
     socket.emit('join', { username, rol: 'client'}, (error) => {
       if (error) {
         if (error === 'UsernameInvalid') {
-          return clientAddNewMessage({text: 'El nombre de usuario está en uso. Por favor pruebe con otro!'})
+          return usernameClientError.innerHTML = 'El nombre de usuario está en uso. Por favor pruebe con otro!'
         }
       }
+
+      // esconder la username-form y mostrar el chat
+      chatTab.classList.remove('username')
+      chatTab.classList.add('chat')
+
+      //guardar nombre en el local storage
+      localStorage.setItem('valag-username', username.trim().toLowerCase()) 
     })
-
-    // esconder la username-form y mostrar el chat
-    chatTab.classList.remove('username')
-    chatTab.classList.add('chat')
-
-    //guardar nombre en el local storage
-    localStorage.setItem('valag-username', username)
   })
 
   socket.on('newMessage', function(msg) {
@@ -156,4 +159,13 @@
   closeClientChat.addEventListener('click', () => {
     chatTab.classList.add('minimized')
   })
+  // Minimizar o ampliar cuando se haga click en el header
+  headerClientChat.addEventListener('click', () => {
+    if (chatTab.classList.contains('minimized')) {
+      chatTab.classList.remove('minimized')
+    } else {
+      chatTab.classList.add('minimized')
+    }
+  })
+
 </script>
