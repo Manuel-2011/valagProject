@@ -1,0 +1,111 @@
+.support-chat {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidebar-support-chat {
+    min-height: 100%;
+    width: 20vw;
+    background-color: $background-form-color1;
+    color: $font-color-carousel;
+
+    &__users {
+        width: 100%;
+        list-style: none;
+    }
+
+    &__user {
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid $shadow-color;
+        cursor: pointer;
+        position: relative;
+    }
+}
+
+.support-chat-board {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 10rem auto 5rem;
+
+    &__title {
+        height: 95%;
+        padding: 3rem;
+        text-align: center;
+        color: $background-form-color1;
+        background-color: $navbar-color;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+    }
+
+    &__messages {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    &__message-box {
+        display: flex;
+
+        &--client {
+            justify-content: flex-start;
+        }
+
+        &--support {
+            justify-content: flex-end;
+        }
+    }
+
+    &__message {
+        padding: 2rem;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: $secondary-font-color;
+        font-size: 1.5rem;
+
+        &--client {
+            margin-left: 3rem;
+            background-color: rgba($green-light, .2);
+        }
+
+        &--support {
+            margin-right: 3rem;
+            background-color: rgba($background-form-color1, .2);
+        }
+    }
+}
+
+.notification {
+    position: absolute;
+    background-color: $chat-notification-color;
+    right: 0.5rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+    top: 0;
+}
+
+.support-chat-form {
+    width: 100%;
+    display: flex;
+
+    &__input {
+        width: 90%;
+        padding: 1rem 2rem;
+    }
+
+    &__submit {
+        width: 10%;
+        background-color: $background-form-color1;
+        color: $font-color-carousel;
+        padding: 1rem;
+        height: 100%;
+        cursor: pointer;
+
+        &:disabled {
+            background-color: $primary-font-color;
+            cursor: initial;
+        }
+    }
+}

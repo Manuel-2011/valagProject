@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+   
+
+
+    <div class="support-chat">
+        <div class="sidebar-support-chat">
+            <ul class="sidebar-support-chat__users" id="users">
+
+            </ul>
+        </div>
+
+        <div class="support-chat-board">
+            <h1 class="support-chat-board__title" id="chat-board-title">
+                Selecciona a un cliente para iniciar el chat
+            </h1>
+
+            <div class="support-chat-board__messages" id="messages">
+            </div>
+
+            <form action="" class="support-chat-form" id="support-chat__form">
+                <input class="support-chat-form__input" type="text" name="supportMessage" id="message-input" autocomplete="off">
+                <button class="support-chat-form__submit" type="submit" id="support-send-btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Elementos
+        const usersList = document.getElementById('users')
+        const chatTitle = document.getElementById('chat-board-title')
+        const chat = document.getElementById('messages')
+        const supportSendBtn = document.getElementById('support-send-btn')
+
+        // Helper functions
+
+        const addTabUserListener = (element, username) => {
+            element.addEventListener('click', () => {
+                chatTitle.innerHTML = username
+                // cargar mensajes del local storage
+                loadMessages(username)
+                // Eliminar notificaciones
+                deleteNotification(username)
+
+                //Activar botón para enviar mensajes
+                supportSendBtn.disabled = false
+            })
+        }
+
+        const createUserTab = ({ username }) => {
+            // Agregar elemento a la lista de usuarios
+            // crear elemento
+            const newUser = document.createElement('li')
+            // agregar clase para estilos y id que es el nombre del canal (socket)
+            newUser.classList.add('sidebar-support-chat__user')
+            newUser.id = username
+            newUser.innerHTML = username
+            // Agregar elemento a elemento ul
+            usersList.appendChild(newUser)
+            // Agregar click event al nuevo tab
+            addTabUserListener(newUser, username)
+        }
+
+        const addNewMessage = (message, username) => {
+            const messageBox = document.createElement('div')
+            messageBox.classList.add('support-chat-board__message-box')
+
+            const newMessage = document.createElement('p')
+            newMessage.classList.add('support-chat-board__message')
+            // Agregar clase a elemento dependiendo si es el cliente o soporte
+            if (message.username === username) {
+                messageBox.classList.add('support-chat-board__message-box--client')
+                newMessage.classList.add('support-chat-board__message--client')
+            } else {
+                messageBox.classList.add('support-chat-board__message-box--support')
+                newMessage.classList.add('support-chat-board__message--support')
+            }
+            // Agregar contenido del texto
+            newMessage.innerHTML = message.text
+            // Agregar mensaje al chat
+            messageBox.appendChild(newMessage)
+            chat.appendChild(messageBox)
+
+            //auto scroll
+            autoscroll()
+        }
+
+        const addNotification = (username) => {
+            const userTab = document.getElementById(username)
+            userTab.innerHTML = `
+                ${username}
+                <span class="notification">Nuevo Mensaje</span>
+            `
+        }
+
+        const deleteNotification = (username) => {
+            const userTab = document.getElementById(username)
+            userTab.innerHTML = username
+        }
+
+        const loadMessages = (username) => {
+            cleanChat()
+
+            const loadChat = JSON.parse(localStorage.getItem('valag-chat'))
+
+            if (loadChat[username]) {
+                loadChat[username].forEach(msg => {
+                    addNewMessage(msg, username)
+                })
+            }
+        }
+
+        const cleanChat = () => {
+            chat.innerHTML = ''
+        }
+
+        const autoscroll = () => {
+            // New message element
+            const newMessage = chat.lastElementChild
+
+            // Height of the new message
+            const newMessageHeight = newMessage.offsetHeight
+
+            // Visible height
+            const visibleHeight = chat.offsetHeight
+
+            // Height of messages container
+            const containerHeight = chat.scrollHeight
+
+            // How far have i scrolled?
+            const scrollOffset = chat.scrollTop + visibleHeight
+
+            if (containerHeight - newMessageHeight <= scrollOffset) {
+                chat.scrollTop = chat.scrollHeight
+            }
+        }
+
+
+        var socket = io();
+        const clients = [] 
+
+        //deshabilitar boton de enviar
+        supportSendBtn.disabled = true
+
+        //Entrar a chat de soporte
+        socket.emit('join', { username: 'Carlos', rol: 'support'}, (error) => {
+            return addNewMessage({ text: error })
+        })
+
+        // Descargar usuarios activos
+        socket.on('supportJoin', (users) => {
+            users.forEach(user => createUserTab(user))
+        })
+
+        // Cliente crea chat
+        socket.on('clientJoin', (user) => {
+            createUserTab(user)
+        })
+
+        // Cliente cierra el chat
+        socket.on('clientLeft', (user) => {
+            // Eliminar el tab del cliente
+            const userElement = document.getElementById(user.username)
+            userElement.remove()
+
+            // Eliminar el chat del cliente
+            const messages = JSON.parse(localStorage.getItem('valag-chat'))
+            if (messages) {
+                delete messages[user.username]
+                localStorage.setItem('valag-chat', JSON.stringify(messages))
+            }
+        })
+
+        //Enviar mensaje
+        const supportChatForm = document.getElementById('support-chat__form')
+        supportChatForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+
+            const username = chatTitle.innerHTML
+            const message = e.target.elements.supportMessage.value
+            if (message) {
+                socket.emit('sendMessage', { to: { username, rol: 'client'}, message }, (error) => {
+                    if (error) {
+                        return addNewMessage({text: error})
+                    }
+                })
+                e.target.elements.supportMessage.value = ''
+            }
+        })
+
+
+        // Recibir mensaje
+        socket.on('newMessage', function(msg) {
+            // Traer chat de la sesión o crear array nuevo
+            const messages = JSON.parse(localStorage.getItem('valag-chat')) || {}
+            
+            // Hacer key de objeto con el nombre del usuario
+            let key
+            if (msg.to) {
+                // mensaje enviado por parte del soporte
+                key = msg.to
+            } else {
+                // mensaje enviado por parte del cliente
+                key = msg.username
+            }
+
+            // Mostrar mensaje en el chat, si el chat esta abierto
+            if (chatTitle.innerHTML == key) {
+                addNewMessage(msg, key)
+            } else {
+                // si el tab del chat no esta abierto, dejar notificacion
+                addNotification(msg.username)
+            }
+
+
+            // guardar mensaje en la lista del usuario correspondiente
+            if (messages[key]) {
+                messages[key].push(msg)
+            } else {
+                messages[key] = [msg]
+            }
+            
+            // guardar objeto de chat nuevamente en localstorage
+            localStorage.setItem('valag-chat', JSON.stringify(messages))
+        });
+    </script>
+</body>
+</html>
