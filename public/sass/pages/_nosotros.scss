@@ -64,11 +64,17 @@
 }
 
 .conectividad-section {
+    padding: 0;
+    padding-top: 8rem;
 
     &__intro {
         width: 70%;
         margin: 0 auto;
         font-size: 2rem;
+
+        @include respond(phone) {
+            width: 100%;
+        }
     }
 
     &__figure {

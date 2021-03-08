@@ -45,6 +45,9 @@ body {
   font-weight: 700;
   letter-spacing: 3px;
   text-align: center; }
+  @media only screen and (max-width: 37.5em) {
+    .primary-header {
+      font-size: 5rem; } }
 
 .secondary-header {
   font-size: 2.5rem;
@@ -256,7 +259,8 @@ body {
   background-color: #103179;
   border: 1.5rem solid #103179;
   border-bottom: 0;
-  border-radius: 1rem 1rem 0 0; }
+  border-radius: 1rem 1rem 0 0;
+  backface-visibility: hidden; }
   @media only screen and (max-width: 37.5em) {
     .client-chat {
       width: 90%; } }
@@ -322,6 +326,9 @@ body {
     padding: 1rem;
     border: 0;
     border-bottom: 3px solid transparent; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__message-input {
+        font-size: 2.3rem; } }
     .client-chat__message-input:focus {
       border-bottom: 3px solid #49a731;
       outline: none; }
@@ -835,6 +842,9 @@ body {
   color: #979797; }
   .section__header {
     margin-bottom: 10rem; }
+    @media only screen and (max-width: 37.5em) {
+      .section__header {
+        margin-bottom: 5rem; } }
 
 .servicios-panel {
   width: 100%;
@@ -1036,77 +1046,79 @@ body {
   outline: 1.5rem inset #103179;
   outline-offset: 3rem; }
 
-.conectividad-section__intro {
-  width: 70%;
-  margin: 0 auto;
-  font-size: 2rem; }
-
-.conectividad-section__figure {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 7rem 0; }
-  @media only screen and (max-width: 56.25em) {
-    .conectividad-section__figure {
-      flex-wrap: wrap; } }
-  @media only screen and (max-width: 37.5em) {
-    .conectividad-section__figure {
-      flex-direction: column; } }
-
-.conectividad-section__figure-element {
-  border-radius: 50%;
-  font-size: 1.5rem;
-  text-align: center;
-  white-space: nowrap;
-  font-weight: 600;
-  width: 15rem;
-  height: 15rem;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  @media only screen and (max-width: 37.5em) {
-    .conectividad-section__figure-element {
-      font-size: 2rem;
-      width: 20rem;
-      height: 20rem; } }
-  .conectividad-section__figure-element--1 {
-    border: 0.5rem solid #e2871e;
-    color: #e2871e;
-    box-shadow: -0.2rem 0.5em 0rem 1rem #bb6f18; }
-  .conectividad-section__figure-element--2 {
-    border: 0.5rem solid #5be41c;
-    color: #5be41c;
-    box-shadow: -0.2rem 0.5em 0rem 1rem #47ac18; }
-  .conectividad-section__figure-element--3 {
-    border: 0.5rem solid #1b7ab1;
-    color: #1b7ab1;
-    box-shadow: -0.2rem 0.5em 0rem 1rem #1e6187; }
-  .conectividad-section__figure-element--4 {
-    border: 0.5rem solid #ae38cc;
-    color: #ae38cc;
-    box-shadow: -0.2rem 0.5em 0rem 1rem #7f2796; }
-  .conectividad-section__figure-element--5 {
-    border: 0.5rem solid #214c9b;
-    color: #214c9b;
-    box-shadow: -0.2rem 0.5em 0rem 1rem #15356f; }
-
-.conectividad-section__figure-arrow {
-  padding: 0 4rem;
-  font-size: 4rem; }
-  @media only screen and (max-width: 75em) {
-    .conectividad-section__figure-arrow {
-      padding: 0 1rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .conectividad-section__figure-arrow {
-      display: none; } }
-
-.conectividad-section__figure-arrow-down {
-  display: none;
-  font-size: 4rem; }
-  @media only screen and (max-width: 37.5em) {
-    .conectividad-section__figure-arrow-down {
-      display: block;
-      padding-top: 2rem; } }
+.conectividad-section {
+  padding: 0;
+  padding-top: 8rem; }
+  .conectividad-section__intro {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 2rem; }
+    @media only screen and (max-width: 37.5em) {
+      .conectividad-section__intro {
+        width: 100%; } }
+  .conectividad-section__figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 0; }
+    @media only screen and (max-width: 56.25em) {
+      .conectividad-section__figure {
+        flex-wrap: wrap; } }
+    @media only screen and (max-width: 37.5em) {
+      .conectividad-section__figure {
+        flex-direction: column; } }
+  .conectividad-section__figure-element {
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 600;
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    @media only screen and (max-width: 37.5em) {
+      .conectividad-section__figure-element {
+        font-size: 2rem;
+        width: 20rem;
+        height: 20rem; } }
+    .conectividad-section__figure-element--1 {
+      border: 0.5rem solid #e2871e;
+      color: #e2871e;
+      box-shadow: -0.2rem 0.5em 0rem 1rem #bb6f18; }
+    .conectividad-section__figure-element--2 {
+      border: 0.5rem solid #5be41c;
+      color: #5be41c;
+      box-shadow: -0.2rem 0.5em 0rem 1rem #47ac18; }
+    .conectividad-section__figure-element--3 {
+      border: 0.5rem solid #1b7ab1;
+      color: #1b7ab1;
+      box-shadow: -0.2rem 0.5em 0rem 1rem #1e6187; }
+    .conectividad-section__figure-element--4 {
+      border: 0.5rem solid #ae38cc;
+      color: #ae38cc;
+      box-shadow: -0.2rem 0.5em 0rem 1rem #7f2796; }
+    .conectividad-section__figure-element--5 {
+      border: 0.5rem solid #214c9b;
+      color: #214c9b;
+      box-shadow: -0.2rem 0.5em 0rem 1rem #15356f; }
+  .conectividad-section__figure-arrow {
+    padding: 0 4rem;
+    font-size: 4rem; }
+    @media only screen and (max-width: 75em) {
+      .conectividad-section__figure-arrow {
+        padding: 0 1rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .conectividad-section__figure-arrow {
+        display: none; } }
+  .conectividad-section__figure-arrow-down {
+    display: none;
+    font-size: 4rem; }
+    @media only screen and (max-width: 37.5em) {
+      .conectividad-section__figure-arrow-down {
+        display: block;
+        padding-top: 2rem; } }
 
 .nosotros-beneficios__subtitle {
   text-align: center;

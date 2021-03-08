@@ -6,6 +6,10 @@
     
     &__header {
         margin-bottom: 10rem;
+
+        @include respond(phone) {
+            margin-bottom: 5rem;
+        }
     }
 
     &__body {
