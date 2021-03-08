@@ -1,0 +1,218 @@
+.us {
+
+    &__block:not(:last-child) {
+        margin-bottom: 8rem;
+
+    }
+
+    &__block {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 15rem;
+
+        &:nth-child(odd) {
+            direction: rtl;
+        }
+
+        @include respond(tab-land) {
+            column-gap: 4rem;
+        }
+
+        @include respond(tab-port) {
+            display: block;
+        }
+    }
+
+    &__content {
+        @include flexCenter;
+        flex-direction: column;
+        direction: ltr;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+    }
+
+    &__title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+    &__text {
+        font-size: 2rem;
+    }
+
+    &__text:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__img-box {
+        @include flexCenter;
+
+        @include respond(tab-port) {
+            margin-top: 8rem;
+        }
+    }
+
+    &__img {
+        width: 75%;
+        object-fit: cover;
+        border-radius: 5px;
+        outline: 1.5rem inset $background-form-color1;
+        outline-offset: 3rem;
+    }
+}
+
+.conectividad-section {
+
+    &__intro {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 2rem;
+    }
+
+    &__figure {
+        @include flexCenter;
+
+        padding: 7rem 0;
+
+        @include respond(tab-port) {
+            flex-wrap: wrap;
+        }
+
+        @include respond(phone) {
+            flex-direction: column;
+        }
+    }
+
+    &__figure-element {
+        border-radius: 50%;
+        font-size: 1.5rem;
+        text-align: center;
+        white-space: nowrap;
+        font-weight: 600;
+
+        width: 15rem;
+        height: 15rem;
+        @include flexCenter;
+
+        @include respond(phone) {
+            font-size: 2rem;
+            width: 20rem;
+            height: 20rem;
+        }
+
+        &--1 {
+            border: 0.5rem solid rgb(226, 135, 30);
+            color: rgb(226, 135, 30);
+            box-shadow: -0.2rem 0.5em 0rem 1rem #bb6f18;
+        }
+        &--2 {
+            border: 0.5rem solid rgb(91, 228, 28);
+            color: rgb(91, 228, 28);
+            box-shadow: -0.2rem 0.5em 0rem 1rem #47ac18;
+        }
+        &--3 {
+            border: 0.5rem solid rgb(27, 122, 177);
+            color: rgb(27, 122, 177);
+            box-shadow: -0.2rem 0.5em 0rem 1rem #1e6187;
+        }
+        &--4 {
+            border: 0.5rem solid rgb(174, 56, 204);
+            color: rgb(174, 56, 204);
+            box-shadow: -0.2rem 0.5em 0rem 1rem #7f2796;
+        }
+        &--5 {
+            border: 0.5rem solid rgb(33, 76, 155);
+            color: rgb(33, 76, 155);
+            box-shadow: -0.2rem 0.5em 0rem 1rem #15356f;
+        }
+    }
+
+    &__figure-arrow {
+        padding: 0 4rem;
+        font-size: 4rem;
+
+        @include respond(tab-land) {
+            padding: 0 1rem;
+        }
+
+        @include respond(phone) {
+            display: none;
+        }
+    }
+
+    &__figure-arrow-down {
+        display: none;
+        font-size: 4rem;
+
+        @include respond(phone) {
+            display: block;
+            padding-top: 2rem;
+        }
+    }
+}
+
+.nosotros-beneficios {
+
+    &__subtitle {
+        text-align: center;
+        margin-bottom: 10rem;
+        background-image: linear-gradient(to right, $background-form-color2, $background-form-color1);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    &__beneficios {
+        min-width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4rem 4rem;
+
+        @include respond(tab-port) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include respond(phone) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__item {
+        @include flexCenter;
+        justify-content: start;
+        flex-direction: column;
+        min-width: 20rem;
+    }
+
+    &__icon {
+        width: 15rem;
+        height: 15rem;
+        font-size: 7rem;
+        border-radius: 50%;
+        box-shadow: 0px 0px 0px 1.8rem $background-form-color1;
+        margin-bottom: 5rem;
+        color: $background-form-color1;
+
+        position: relative;
+
+        & > * {
+            @include absoluteCenter;
+        }
+
+        @include respond(tab-port) {
+            width: 9rem;
+            height: 9rem;
+            font-size: 6rem;
+            box-shadow: 0px 0px 0px 1.4rem #103179;
+        }
+    }
+
+    &__text {
+        font-size: 2rem;
+        padding: 4rem 2rem;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+        border-radius: 1rem;
+    }
+}
