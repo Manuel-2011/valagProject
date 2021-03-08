@@ -1,50 +1,44 @@
 .contact-section {
     padding: 8rem 4rem;
+    padding-bottom: 0;
 }
 
 .contact-card {
-    width: 70rem;
+    width: 100%;
+    max-width: 100rem;
     margin: 0 auto;
     margin-top: 2rem;
     padding: 4rem 6rem;
-    background: linear-gradient(to bottom right, $btn-background-color, rgba($background-form-color1, .4));
     border-radius: 5px;
+    background-image: linear-gradient(115deg, $btn-background-color 0%, rgba(144, 168, 218, .8) 50%, transparent 50%), url('/img/contactanos.jpg');
+    background-size: cover;
+    background-position: center;
 
-    @include respond(phone) {
-        width: 100%;
+    @include respond(tab-port) {
+        background-image: linear-gradient(115deg, $btn-background-color 0%, rgba(144, 168, 218, .8) 60%, transparent 60%), url('/img/contactanos.jpg');
     }
 
-    &__header {
-        text-align: center;
-        font-size: 2.5rem;
-        color: $background-form-color1;
-        font-weight: 800;
-        margin-bottom: 2rem;
+    @include respond(phone) {
+        background-image: linear-gradient(115deg, $btn-background-color 0%, rgba(144, 168, 218, .8) 100%, transparent 100%), url('/img/contactanos.jpg');
     }
 
     &__content {
         display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: $secondary-font-color;
 
         @include respond(phone) {
-            flex-direction: column-reverse;
-            justify-content: space-between;
             align-items: center;
         }
     }
 
-    &__imagen {
-        width: 50%;
-        position: relative;
-        @include respond(phone) {
-            width: 40rem;
-        }
-    }
-
-    &__map {
-        width: 100%;
+    &__header {
+        font-size: 4.5rem;
+        color: $secondary-font-color;
+        font-weight: 600;
+        margin: 7rem 0;
     }
 
     &__details {
@@ -66,32 +60,6 @@
 
         @include respond(phone) {
             color: $tertiary-font-color;
-        }
-    }
-}
-
-.map-point {
-    position: absolute;
-    color: $background-form-color1;
-    font-size: 5rem;
-
-    &--1 {
-        top: 15rem;
-        left: 10rem;
-
-        @include respond(phone) {
-            top: 24rem;
-            left: 14rem;
-        }
-    }
-
-    &--2 {
-        top: 17rem;
-        left: 7rem;
-
-        @include respond(phone) {
-            top: 26rem;
-            left: 11rem;
         }
     }
 }

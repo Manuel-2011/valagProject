@@ -181,7 +181,7 @@
 
     &__item {
         @include flexCenter;
-        justify-content: start;
+        justify-content: flex-start;
         flex-direction: column;
         min-width: 20rem;
     }
