@@ -1,4 +1,7 @@
 <div class="client-chat username minimized" id="client-chat-tab">
+  <div class="client-chat__notification" id="client-chat-notification">
+    Nuevo mensaje
+  </div>
   <div class="client-chat__controls">
     <button class="client-chat__close" id="client-chat-close">&times;</button>
     <button class="client-chat__open" id="client-chat-open"><ion-icon name="caret-up"></ion-icon></button>
@@ -37,6 +40,8 @@
   const closeClientChat = document.getElementById('client-chat-close')
   const openClientChat = document.getElementById('client-chat-open')
   const headerClientChat = document.getElementById('client-chat-header')
+
+  const notification = document.getElementById('client-chat-notification')
 
   // Helper function
   const clientAddNewMessage = (message, username) => {
@@ -115,6 +120,8 @@
         if (error) {
           if (error === 'UsernameInvalid') {
             return clientAddNewMessage({text: 'Lo siento! Solo puede tener un chat activo al tiempo. Regrese a la anterior pestaña!'})
+          } else if (error === 'noSupportAgents') {
+            return clientAddNewMessage({text: 'Lo siento! No hay asesores disponibles en este momento. Por favor, intentelo más tarde.'}, 'support')
           }
           return
         }
@@ -146,6 +153,11 @@
 
   socket.on('newMessage', function(msg) {
     clientAddNewMessage(msg, username)
+
+    // Dejar notificacion en caso de tener el chat minimizado
+    if (chatTab.classList.contains('minimized')) {
+      notification.classList.add('active')
+    }
   });
 
 
@@ -154,6 +166,8 @@
   // ampliar ventana de chat
   openClientChat.addEventListener('click', () => {
     chatTab.classList.remove('minimized')
+    // Eliminar notificacion si la hay
+    notification.classList.remove('active')
   })
   // minimizar ventana de chat
   closeClientChat.addEventListener('click', () => {
@@ -163,6 +177,8 @@
   headerClientChat.addEventListener('click', () => {
     if (chatTab.classList.contains('minimized')) {
       chatTab.classList.remove('minimized')
+      // Eliminar notificacion si la hay
+      notification.classList.remove('active')
     } else {
       chatTab.classList.add('minimized')
     }

@@ -3,7 +3,8 @@ const path = require('path')
 const hbs = require('hbs')
 const cors = require('cors');
 const {generateMessage} = require('./utils/messages')
-const { addUser, removeUser, getUser, getUserByName, getClients } = require('./utils/users')
+const { addUser, removeUser, getUser, getUserByName, getClients, getAgents } = require('./utils/users');
+const { get } = require('http');
 
 const app = express()
 const http = require('http').createServer(app)
@@ -53,6 +54,13 @@ io.on('connection', (socket) => {
         // if it is a support agent join him to the support channel
         if (user.rol === 'client') {
             socket.join(user.username)
+
+            // Revisar si no hay agentes de soporte disponibles
+            if (getAgents().length === 0) {
+                return callback('noSupportAgents')
+            }
+
+
             // Emit the join event for support to know
             io.to('support').emit('clientJoin', user)
 
@@ -76,7 +84,6 @@ io.on('connection', (socket) => {
         try {
             if (to.rol === 'client') {
                 client =  getUserByName(to.username)
-    
                  // Enviar mensaje a cliente
                 io.to(client.username).emit('newMessage', generateMessage(from.username, message))
                 // Enviar mensaje a soporte

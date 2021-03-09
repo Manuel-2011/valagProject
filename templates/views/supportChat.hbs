@@ -154,7 +154,9 @@
 
         //Entrar a chat de soporte
         socket.emit('join', { username: 'Carlos', rol: 'support'}, (error) => {
-            return addNewMessage({ text: error })
+            if (error) {
+                return addNewMessage({ text: error })
+            }
         })
 
         // Descargar usuarios activos
@@ -179,6 +181,9 @@
                 delete messages[user.username]
                 localStorage.setItem('valag-chat', JSON.stringify(messages))
             }
+
+            // Bloquear le botón de enviar mensajes
+            supportSendBtn.disabled = true
         })
 
         //Enviar mensaje

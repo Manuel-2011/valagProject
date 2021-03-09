@@ -46,6 +46,8 @@ const getUserByName = (name) => {
 
 const getClients = () => users.filter(user => user.rol === 'client')
 
+const getAgents = () => users.filter(user => user.rol === 'support')
+
 
 module.exports = {
     addUser,
@@ -53,4 +55,5 @@ module.exports = {
     getUser,
     getUserByName,
     getClients,
+    getAgents,
 }

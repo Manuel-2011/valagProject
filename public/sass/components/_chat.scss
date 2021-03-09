@@ -15,6 +15,22 @@
         width: 90%;
     }
 
+    &__notification {
+        display: none;
+
+        &.active {
+            background-color: $chat-notification-color;
+            color: $font-color-carousel;
+            padding: 2rem;
+            position: absolute;
+            top: -6rem;
+            left: 0;
+            display: block;
+            border-radius: 5px;
+            font-size: 1.6rem;
+        }
+    }
+
     &__controls {
         position: absolute;
         top: 0;
