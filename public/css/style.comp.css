@@ -937,7 +937,7 @@ body {
         top: 50%; } }
     @media only screen and (max-width: 28.125em) {
       .main-benefit__image {
-        width: 125%;
+        width: 121%;
         top: 25%;
         left: -12%; } }
     .main-benefit__image img {
