@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VALAG | chat</title>
 
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -149,6 +149,18 @@
         var socket = io();
         const clients = [] 
 
+        // Agregar evento para determinar si la ventena está activa o no
+        // variable global de venta activa
+        let tabActive = true
+        document.addEventListener("visibilitychange", event => {
+            if (document.visibilityState == "visible") {
+                tabActive = true
+                document.title = "VALAG | chat"
+            } else {
+                tabActive = false
+            }
+        })
+
         //deshabilitar boton de enviar
         supportSendBtn.disabled = true
 
@@ -237,6 +249,11 @@
             
             // guardar objeto de chat nuevamente en localstorage
             localStorage.setItem('valag-chat', JSON.stringify(messages))
+
+            // Mostrar notificacion en el titulo de la pagina si la ventana está en inactiva
+            if (!tabActive) {
+                document.title = "VALAG | chat | nuevo mensaje"
+            }
         });
     </script>
 </body>
