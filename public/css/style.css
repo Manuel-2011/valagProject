@@ -701,9 +701,9 @@ body {
         border-radius: 0 0 3px 3px;
         box-shadow: -1rem 2rem 2rem rgba(0, 0, 0, 0.2);
         background-color: #f7f7f7; }
-        .header-navbar__links.open .header-navbar__links__link a,
-        .header-navbar__links.open .header-navbar__links__link a:link,
-        .header-navbar__links.open .header-navbar__links__link a:visited {
+        .header-navbar__links.open .header-navbar__links__link:not(:last-child) a,
+        .header-navbar__links.open .header-navbar__links__link:not(:last-child) a:link,
+        .header-navbar__links.open .header-navbar__links__link:not(:last-child) a:visited {
           border-bottom: 1px solid #103179; }
         .header-navbar__links.open .header-navbar__links__link {
           position: relative;

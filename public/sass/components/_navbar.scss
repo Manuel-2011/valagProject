@@ -127,9 +127,9 @@
 
             background-color: $navbar-color;
 
-            .header-navbar__links__link a,
-            .header-navbar__links__link a:link,
-            .header-navbar__links__link a:visited {
+            .header-navbar__links__link:not(:last-child) a,
+            .header-navbar__links__link:not(:last-child) a:link,
+            .header-navbar__links__link:not(:last-child) a:visited {
                 border-bottom: 1px solid $background-form-color1;
             }
 
