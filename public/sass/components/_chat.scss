@@ -4,6 +4,7 @@
     right: 3rem;
     width: 45rem;
     background-color: $background-form-color1;
+    cursor: pointer;
 
     padding: 1rem 1rem 0 1rem;
     border-radius: 1rem 1rem 0 0;
@@ -22,12 +23,12 @@
         &.active {
             background-color: $chat-notification-color;
             color: $font-color-carousel;
-            padding: 2rem;
+            padding: 1rem;
             position: absolute;
-            top: -6rem;
-            left: 0;
+            top: -3rem;
+            left: 10%;
             display: block;
-            border-radius: 5px;
+            border-radius: 2rem;
             font-size: 1.6rem;
         }
     }
@@ -82,7 +83,6 @@
         color: $font-color-carousel;
         font-weight: 200;
         margin-bottom: 0.5rem;
-        cursor: pointer;
 
         @include respond(phone) {
             font-size: 3rem;
@@ -95,6 +95,7 @@
         background-color: $btn-background-color;
         overflow-y: scroll;
         padding: 1rem;
+        cursor: initial;
     }
 
     &__message-form {

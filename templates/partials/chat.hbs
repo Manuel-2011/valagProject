@@ -121,7 +121,11 @@
           if (error === 'UsernameInvalid') {
             return clientAddNewMessage({text: 'Lo siento! Solo puede tener un chat activo al tiempo. Regrese a la anterior pestaña!'})
           } else if (error === 'noSupportAgents') {
-            return clientAddNewMessage({text: 'Lo siento! No hay asesores disponibles en este momento. Por favor, intentelo más tarde.'}, 'support')
+            clientAddNewMessage({text: 'Lo siento! En este momento no hay asesores disponibles. Por favor, intenta más tarde.'}, 'support')
+            socket.on('agentAvailable', () => {
+              clientAddNewMessage({text: 'Nuestros asesores ya se encuentran listos para atenderte!'}, 'support')
+            })
+            return 
           }
           return
         }
@@ -139,7 +143,21 @@
       if (error) {
         if (error === 'UsernameInvalid') {
           return usernameClientError.innerHTML = 'El nombre de usuario está en uso. Por favor pruebe con otro!'
+        } else if (error === 'noSupportAgents') {
+          // esconder la username-form y mostrar el chat
+          chatTab.classList.remove('username')
+          chatTab.classList.add('chat')
+
+          //guardar nombre en el local storage
+          localStorage.setItem('valag-username', username.toLowerCase().trim()) 
+
+          clientAddNewMessage({text: 'Lo siento! En este momento no hay asesores disponibles. Por favor, intenta más tarde.'}, 'support')
+          socket.on('agentAvailable', () => {
+            clientAddNewMessage({text: 'Nuestros asesores ya se encuentran listos para atenderte!'}, 'support')
+          })
+          return 
         }
+        return
       }
 
       // esconder la username-form y mostrar el chat
@@ -164,17 +182,21 @@
   // MINIMIZAR Y AMPLIAR VENTANA DE CHAT
 
   // ampliar ventana de chat
-  openClientChat.addEventListener('click', () => {
+  openClientChat.addEventListener('click', (e) => {
     chatTab.classList.remove('minimized')
     // Eliminar notificacion si la hay
     notification.classList.remove('active')
+
+    e.stopPropagation()
   })
   // minimizar ventana de chat
-  closeClientChat.addEventListener('click', () => {
+  closeClientChat.addEventListener('click', (e) => {
     chatTab.classList.add('minimized')
+
+    e.stopPropagation()
   })
-  // Minimizar o ampliar cuando se haga click en el header
-  headerClientChat.addEventListener('click', () => {
+  // Minimizar o ampliar cuando se haga click la ventana del chat
+  chatTab.addEventListener('click', () => {
     if (chatTab.classList.contains('minimized')) {
       chatTab.classList.remove('minimized')
       // Eliminar notificacion si la hay
@@ -182,6 +204,15 @@
     } else {
       chatTab.classList.add('minimized')
     }
+  })
+
+  // No minimzar chat si click se hace sobre el tablero del chat
+  clientChat.addEventListener('click', e => {
+    e.stopPropagation()
+  })
+  // No minimzar chat si click se hace sobre el chat form
+  clientMessageForm.addEventListener('click', e => {
+    e.stopPropagation()
   })
 
 </script>

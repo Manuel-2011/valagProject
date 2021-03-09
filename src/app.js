@@ -70,6 +70,8 @@ io.on('connection', (socket) => {
             socket.join('support')
             // Enviar clientes activos al soporte que se unió
             socket.emit('supportJoin', getClients())
+            // Enviar evento para clientes que estaban conectados pero no habían agentes de soporte disponibles
+            io.emit('agentAvailable')
         }
 
         callback()
