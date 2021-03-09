@@ -657,7 +657,8 @@ body {
       .header-navbar__links__link a:visited:hover {
         color: #AB0A0A; }
     .header-navbar__links__link {
-      position: relative; }
+      position: relative;
+      border-bottom: 3px solid transparent; }
       .header-navbar__links__link.active {
         border-bottom: 3px solid #103179;
         color: #103179; }
