@@ -12,6 +12,8 @@
 
     @include respond(phone) {
         width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     &__notification {
