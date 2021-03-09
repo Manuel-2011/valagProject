@@ -5,8 +5,7 @@
     width: 45rem;
     background-color: $background-form-color1;
 
-    border: 1.5rem solid #103179;
-    border-bottom: 0;
+    padding: 1rem 1rem 0 1rem;
     border-radius: 1rem 1rem 0 0;
 
     backface-visibility: hidden;
@@ -33,10 +32,10 @@
 
     &__controls {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 1rem;
+        right: 5%;
         @include respond(phone) {
-            top: 1rem;
+            top: 2rem;
         }
     }
 
@@ -112,6 +111,7 @@
         font-family: inherit;
         padding: 1rem;
         border: 0;
+        border-radius: 0;
         border-bottom: 3px solid transparent;
 
         @include respond(phone) {

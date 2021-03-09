@@ -257,20 +257,31 @@ body {
   right: 3rem;
   width: 45rem;
   background-color: #103179;
-  border: 1.5rem solid #103179;
-  border-bottom: 0;
+  padding: 1rem 1rem 0 1rem;
   border-radius: 1rem 1rem 0 0;
   backface-visibility: hidden; }
   @media only screen and (max-width: 37.5em) {
     .client-chat {
       width: 90%; } }
+  .client-chat__notification {
+    display: none; }
+    .client-chat__notification.active {
+      background-color: #d12a2a;
+      color: #fff;
+      padding: 2rem;
+      position: absolute;
+      top: -6rem;
+      left: 0;
+      display: block;
+      border-radius: 5px;
+      font-size: 1.6rem; }
   .client-chat__controls {
     position: absolute;
-    top: 0;
-    right: 0; }
+    top: 1rem;
+    right: 5%; }
     @media only screen and (max-width: 37.5em) {
       .client-chat__controls {
-        top: 1rem; } }
+        top: 2rem; } }
   .client-chat__close {
     color: #fff;
     background-color: transparent;
@@ -325,6 +336,7 @@ body {
     font-family: inherit;
     padding: 1rem;
     border: 0;
+    border-radius: 0;
     border-bottom: 3px solid transparent; }
     @media only screen and (max-width: 37.5em) {
       .client-chat__message-input {
