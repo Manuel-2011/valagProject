@@ -4,6 +4,14 @@
     padding: 10rem 2rem 2rem 2rem;
     margin-top: 13rem;
 
+    @include respond(tab-land) {
+        padding-bottom: 5rem;
+    }
+
+    @include respond(phone) {
+        padding-bottom: 9rem;
+    }
+
     &__main-content {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

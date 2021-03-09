@@ -524,6 +524,12 @@ body {
   box-shadow: 0 -1rem 2rem 1rem rgba(0, 0, 0, 0.2);
   padding: 10rem 2rem 2rem 2rem;
   margin-top: 13rem; }
+  @media only screen and (max-width: 75em) {
+    .footer {
+      padding-bottom: 5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .footer {
+      padding-bottom: 9rem; } }
   .footer__main-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
