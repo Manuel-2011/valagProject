@@ -1016,6 +1016,26 @@ body {
   .links-obligatorios__link:hover {
     transform: scale(1.2); }
 
+.login {
+  height: 100vh;
+  background-color: #103179; }
+  .login__header {
+    color: #fff;
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center; }
+  .login__subheader {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center; }
+  .login__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff; }
+
 .us__block:not(:last-child) {
   margin-bottom: 8rem; }
 
@@ -1197,10 +1217,34 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   border-radius: 1rem; }
 
-.support-chat {
+.support-chat__header {
+  height: 8vh;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.support-chat__logo {
+  height: 90%; }
+
+.support-chat__logout {
+  background-color: #d12a2a;
+  color: #fff;
+  border: 0;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-right: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s; }
+  .support-chat__logout:hover {
+    transform: translateY(-0.5rem); }
+  .support-chat__logout:focus {
+    outline: none; }
+
+.support-chat__body {
   display: flex;
   width: 100vw;
-  height: 100vh; }
+  height: 92vh; }
 
 .sidebar-support-chat {
   min-height: 100%;
@@ -1219,7 +1263,7 @@ body {
 
 .support-chat-board {
   width: 100%;
-  height: 100vh;
+  height: 92vh;
   display: grid;
   grid-template-rows: 10rem auto 5rem; }
   .support-chat-board__title {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login">
+        <h2 class="login__header">
+            VALAG
+        </h2>
+        <h3 class="login__subheader">
+            Chat de Soporte
+        </h3>
+        <form action="" class="login__form" id="login-form">
+            <label for="correo-login-input" class="login__correo-label">Correo</label>
+            <input type="text" class="login__correo-input" name="correoLogin" id="correo-login-input">
+
+            <label for="password-login-input" class="login__password-label">Contraseña</label>
+            <input type="password" class="login__password-input" name="passwordLogin" id="password-login-input">
+
+            <button class="login__submit-btn">Ingresar</button>
+        </form>
+    </div>
+
+    <script>
+        // elements
+        const $loginForm = document.getElementById('login-form');
+
+        // api request
+        async function login(url = '', data = {}) {
+            const response = await fetch(url, {
+                method: 'POST',
+                 headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            return response.json()
+        }
+
+        // submit event
+        $loginForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const correo = $loginForm.elements.correoLogin.value
+            const password = $loginForm.elements.passwordLogin.value
+
+            login('/users/login', { correo, password })
+                .then(data => {
+                    if (data.token) {
+                        const token = data.token
+                        const date = new Date()
+                        date.setTime(date.getTime() + (3*24*60*60*1000))
+                        document.cookie = `token=${token}; expires=${date.getUTCDate()}; path=/`
+                        // Redirigir a chat despues de login exitioso
+                        location.href = "/supportchat" 
+                    } else {
+                        const errorElement = document.createElement('p')
+                        errorElement.classList.add('login__error')
+                        errorElement.innerHTML = data.error
+                        $loginForm.appendChild(errorElement)
+                    }
+                })
+        })
+
+        
+
+    </script>
+</body>
+</html>
