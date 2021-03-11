@@ -14,7 +14,7 @@
     }
 
     &__title {
-        font-size: 2rem
+        font-size: 2rem;
     }
 
     &__logout {
@@ -73,9 +73,11 @@
     &__user {
         padding: 1rem;
         text-align: center;
-        border: 1px solid $shadow-color;
+        border-bottom: 2px solid $shadow-color;
         cursor: pointer;
         position: relative;
+        font-size: 1.6rem;
+        background-image: linear-gradient(105deg, $blue-color, $background-form-color1);
     }
 }
 
@@ -91,6 +93,7 @@
         text-align: center;
         color: $background-form-color1;
         background-color: $navbar-color;
+        text-transform: uppercase;
     }
 
     &__messages {
@@ -98,6 +101,7 @@
         overflow-y: scroll;
         box-shadow: inset 0 0 2rem rgba($shadow-color, .2);
         background-color: $navbar-color;
+        padding-top: 1rem;
     }
 
     &__message-box {
@@ -135,11 +139,22 @@
 .notification {
     position: absolute;
     background-color: $chat-notification-color;
-    right: 0.5rem;
+    left: 80%;
+    width: 50%;
+    top: 4px;
     padding: 0.7rem;
     border-radius: 0.5rem;
     z-index: 10;
-    top: 0;
+    box-shadow: 0 1rem 2rem rgba($shadow-color, .4);
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        transform: scale(1.05) translateY(-0.3rem);
+    }
+
+    &:active {
+        transform: scale(1);
+    }
 }
 
 .support-chat-form {
@@ -149,19 +164,41 @@
     &__input {
         width: 90%;
         padding: 1rem 2rem;
+        border: 0;
+        box-shadow: inset 0 0 1rem rgba($shadow-color, .2);
+        border-bottom: 5px solid transparent;
+        font-size: 1.6rem;
+        color: inherit;
+
+        &:focus {
+            outline: none;
+            border-bottom: 5px solid $green-primary;
+        }
     }
 
     &__submit {
+        @include flexCenter;
+        border: 0;
+        font-size: 1.6rem;
         width: 10%;
-        background-color: $background-form-color1;
+        background-image: linear-gradient(105deg, $green-light, $green-primary);
         color: $font-color-carousel;
         padding: 1rem;
         height: 100%;
         cursor: pointer;
 
         &:disabled {
-            background-color: $primary-font-color;
+            background-image: linear-gradient(105deg, $secondary-font-color, $primary-font-color);
             cursor: initial;
+        }
+
+        &:focus {
+            outline: 2px solid $green-primary;
+        }
+
+        &__icon {
+            font-size: 2rem;
+            margin-left: 0.5rem;
         }
     }
 }

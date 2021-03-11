@@ -33,7 +33,7 @@
 
             <form action="" class="support-chat-form" id="support-chat__form">
                 <input class="support-chat-form__input" type="text" name="supportMessage" id="message-input" autocomplete="off">
-                <button class="support-chat-form__submit" type="submit" id="support-send-btn">Enviar</button>
+                <button class="support-chat-form__submit" type="submit" id="support-send-btn">Enviar <span class="support-chat-form__submit__icon"><ion-icon name="send"></ion-icon></span></button>
             </form>
         </div>
     </div>
@@ -102,8 +102,8 @@
         }
 
         const addNotification = (username) => {
-            const userTab = document.getElementById(username)
-            userTab.innerHTML = `
+            const $userTab = document.getElementById(username)
+            $userTab.innerHTML = `
                 ${username}
                 <span class="notification">Nuevo Mensaje</span>
             `

@@ -1445,9 +1445,11 @@ body {
   .sidebar-support-chat__user {
     padding: 1rem;
     text-align: center;
-    border: 1px solid #000;
+    border-bottom: 2px solid #000;
     cursor: pointer;
-    position: relative; }
+    position: relative;
+    font-size: 1.6rem;
+    background-image: linear-gradient(105deg, #1e57ac, #103179); }
 
 .support-chat-board {
   width: 100%;
@@ -1459,12 +1461,14 @@ body {
     padding: 3rem;
     text-align: center;
     color: #103179;
-    background-color: #f7f7f7; }
+    background-color: #f7f7f7;
+    text-transform: uppercase; }
   .support-chat-board__messages {
     height: 100%;
     overflow-y: scroll;
     box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.2);
-    background-color: #f7f7f7; }
+    background-color: #f7f7f7;
+    padding-top: 1rem; }
   .support-chat-board__message-box {
     display: flex; }
     .support-chat-board__message-box--client {
@@ -1488,25 +1492,50 @@ body {
 .notification {
   position: absolute;
   background-color: #d12a2a;
-  right: 0.5rem;
+  left: 80%;
+  width: 50%;
+  top: 4px;
   padding: 0.7rem;
   border-radius: 0.5rem;
   z-index: 10;
-  top: 0; }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease-out; }
+  .notification:hover {
+    transform: scale(1.05) translateY(-0.3rem); }
+  .notification:active {
+    transform: scale(1); }
 
 .support-chat-form {
   width: 100%;
   display: flex; }
   .support-chat-form__input {
     width: 90%;
-    padding: 1rem 2rem; }
+    padding: 1rem 2rem;
+    border: 0;
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid transparent;
+    font-size: 1.6rem;
+    color: inherit; }
+    .support-chat-form__input:focus {
+      outline: none;
+      border-bottom: 5px solid #49a731; }
   .support-chat-form__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    font-size: 1.6rem;
     width: 10%;
-    background-color: #103179;
+    background-image: linear-gradient(105deg, #4de926, #49a731);
     color: #fff;
     padding: 1rem;
     height: 100%;
     cursor: pointer; }
     .support-chat-form__submit:disabled {
-      background-color: #979797;
+      background-image: linear-gradient(105deg, #646464, #979797);
       cursor: initial; }
+    .support-chat-form__submit:focus {
+      outline: 2px solid #49a731; }
+    .support-chat-form__submit__icon {
+      font-size: 2rem;
+      margin-left: 0.5rem; }
