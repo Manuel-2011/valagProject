@@ -813,6 +813,137 @@ body {
   left: 1500px;
   transform: scale(2); }
 
+.admin__header {
+  height: 6rem;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.admin__logo {
+  height: 90%; }
+
+.admin__logout {
+  background-color: #d12a2a;
+  color: #fff;
+  border: 0;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-right: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s; }
+  .admin__logout:hover {
+    transform: translateY(-0.5rem); }
+  .admin__logout:focus {
+    outline: none; }
+
+.admin__user-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 70%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  font-size: 1.6rem; }
+  .admin__user-item:not(:last-child) {
+    border-bottom: 1px solid #979797; }
+
+.admin__user-actions > * {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #fff;
+  transition: all .2s; }
+  .admin__user-actions > *:hover {
+    transform: translateY(-0.2rem); }
+
+.admin__user-actions > *:not(:last-child) {
+  margin-right: 2rem; }
+
+.admin__user-logout-all {
+  background-color: #d69a15; }
+  .admin__user-logout-all:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(214, 154, 21, 0.6); }
+
+.admin__user-update {
+  background-color: #1e57ac; }
+  .admin__user-update:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(30, 87, 172, 0.6); }
+
+.admin__user-delete {
+  background-color: #d12a2a; }
+  .admin__user-delete:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(209, 42, 42, 0.6); }
+
+.admin__user-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.admin__user-form-close, .admin__user-form-close:link, .admin__user-form-close:active {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  text-decoration: none;
+  color: inherit;
+  font-size: 3rem; }
+
+.admin__user-form-header {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 4rem;
+  margin-bottom: 2rem; }
+
+.admin__user-create {
+  background-color: #49a731;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all .2s;
+  border: 0;
+  margin: 2rem;
+  margin-left: 15%;
+  font-size: 1.5rem; }
+  .admin__user-create:hover {
+    transform: translateY(-0.2rem); }
+  .admin__user-create:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(73, 167, 49, 0.6); }
+
+.admin__user-input {
+  margin: 2rem 0;
+  width: 90%;
+  padding: 1rem;
+  border: 1px solid #000; }
+  .admin__user-input:focus {
+    outline: none;
+    border-bottom: 2px solid #1e57ac; }
+
+.admin__submit-form {
+  background-color: #1e57ac;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all .2s;
+  border: 0; }
+  .admin__submit-form:hover {
+    transform: translateY(-0.2rem); }
+  .admin__submit-form:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(30, 87, 172, 0.6); }
+
+.admin__user-form-alert {
+  color: #d12a2a; }
+
 .contact-section {
   padding: 8rem 4rem;
   padding-bottom: 0; }
@@ -1017,6 +1148,10 @@ body {
     transform: scale(1.2); }
 
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
   background-color: #103179; }
   .login__header {
@@ -1034,7 +1169,44 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #fff; }
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.75);
+    font-size: 1.6rem; }
+  .login__input-box {
+    padding: 1rem; }
+    .login__input-box:first-child {
+      border-bottom: 1px solid #979797; }
+  .login__label {
+    margin-bottom: 1rem;
+    display: block; }
+  .login__input {
+    font-size: inherit;
+    color: inherit;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    box-shadow: inset 0 0 1rem rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem; }
+    .login__input:focus {
+      outline: none;
+      border-bottom: 2px solid #1e57ac; }
+  .login__submit-btn {
+    background-color: #1e57ac;
+    border: 0;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #fff;
+    transition: all .2s; }
+    .login__submit-btn:hover {
+      transform: translateY(-0.2rem); }
+    .login__submit-btn:focus {
+      outline: none;
+      transform: scale(1.1); }
 
 .us__block:not(:last-child) {
   margin-bottom: 8rem; }
@@ -1227,19 +1399,35 @@ body {
 .support-chat__logo {
   height: 90%; }
 
+.support-chat__title {
+  font-size: 2rem; }
+
 .support-chat__logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
   background-color: #d12a2a;
   color: #fff;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   margin-right: 2rem;
   cursor: pointer;
-  transition: transform 0.2s; }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  z-index: 100; }
   .support-chat__logout:hover {
-    transform: translateY(-0.5rem); }
+    transform: translateY(-0.2rem); }
+  .support-chat__logout:active {
+    transform: translateY(-0.1rem); }
   .support-chat__logout:focus {
-    outline: none; }
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4); }
+  .support-chat__logout__icon {
+    font-size: 2rem;
+    margin-left: 1rem; }
 
 .support-chat__body {
   display: flex;
@@ -1267,15 +1455,16 @@ body {
   display: grid;
   grid-template-rows: 10rem auto 5rem; }
   .support-chat-board__title {
-    height: 95%;
+    height: 100%;
     padding: 3rem;
     text-align: center;
     color: #103179;
-    background-color: #f7f7f7;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    background-color: #f7f7f7; }
   .support-chat-board__messages {
     height: 100%;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.2);
+    background-color: #f7f7f7; }
   .support-chat-board__message-box {
     display: flex; }
     .support-chat-board__message-box--client {

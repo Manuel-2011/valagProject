@@ -1,4 +1,6 @@
 .login {
+    @include flexCenter;
+    flex-direction: column;
     height: 100vh;
     background-color: $background-form-color1;
 
@@ -20,5 +22,58 @@
         @include flexCenter;
         flex-direction: column;
         background-color: $background-color;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .75);
+        font-size: 1.6rem;
+    }
+
+    &__input-box {
+        padding: 1rem;
+
+        &:first-child {
+            border-bottom: 1px solid $primary-font-color;
+        }
+    }
+
+    &__label {
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    &__input {
+        font-size: inherit;
+        color: inherit;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        box-shadow: inset 0 0 1rem rgba($shadow-color, .2);
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $blue-color;
+        }
+    }
+
+    &__submit-btn {
+        background-color: $blue-color;
+        border: 0;
+        border-radius: 0.5rem;
+        font-size: 1.6rem;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        color: $font-color-carousel;
+        transition: all .2s;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        &:focus {
+            outline: none;
+            transform: scale(1.1);
+        }
     }
 }

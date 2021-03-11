@@ -1,0 +1,179 @@
+.admin {
+    &__header {
+        height: 6rem;
+        background-color: $navbar-color;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        height: 90%;
+    }
+
+    &__logout {
+        background-color: $red-color;
+        color: $font-color-carousel;
+        border: 0;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin-right: 2rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: translateY(-0.5rem);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__user-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 70%;
+        margin: 0 auto;
+        padding: 3rem 0;
+        font-size: 1.6rem;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $primary-font-color;
+        }
+    }
+
+    &__user-actions {
+
+        & > * {
+            border: 0;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: $font-color-carousel;
+            transition: all .2s;
+
+            &:hover {
+                transform: translateY(-0.2rem);
+            }
+        }
+
+        & > *:not(:last-child) {
+            margin-right: 2rem;
+        }
+    }
+
+    &__user-logout-all {
+        background-color: $yellow-color;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($yellow-color, .6);
+        } 
+    }
+
+    &__user-update {
+        background-color: $blue-color;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($blue-color, .6);
+        } 
+    }
+
+    &__user-delete {
+        background-color: $red-color;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($red-color, .6);
+        } 
+    }
+
+    &__user-form {
+        @include flexCenter;
+        flex-direction: column;
+    }
+
+    &__user-form-close {
+
+        &,
+        &:link,
+        &:active {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 3rem;
+        }  
+    }
+
+    &__user-form-header {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    &__user-create {
+        background-color: $green-primary;
+        color: $font-color-carousel;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all .2s;
+        border: 0;
+        margin: 2rem;
+        margin-left: 15%;
+        font-size: 1.5rem;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($green-primary, .6);
+        }
+    }
+
+    &__user-input {
+        margin: 2rem 0;
+        width: 90%;
+        padding: 1rem;
+        border: 1px solid $shadow-color;
+        
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $blue-color;
+        }
+    }
+
+    &__submit-form {
+        background-color: $blue-color;
+        color: $font-color-carousel;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all .2s;
+        border: 0;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($blue-color, .6);
+        } 
+    }
+
+    &__user-form-alert {
+        color: $red-color;
+    }
+}

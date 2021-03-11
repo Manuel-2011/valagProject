@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
+    <title>VALAG | Login</title>
 </head>
 <body>
     <div class="login">
@@ -16,19 +16,26 @@
             Chat de Soporte
         </h3>
         <form action="" class="login__form" id="login-form">
-            <label for="correo-login-input" class="login__correo-label">Correo</label>
-            <input type="text" class="login__correo-input" name="correoLogin" id="correo-login-input">
+            <div class="login__input-box">
+                <label for="correo-login-input" class="login__label">Correo</label>
+                <input type="email" class="login__input" name="correoLogin" id="correo-login-input">
+            </div>
 
-            <label for="password-login-input" class="login__password-label">Contraseña</label>
-            <input type="password" class="login__password-input" name="passwordLogin" id="password-login-input">
+            <div class="login__input-box">
+                <label for="password-login-input" class="login__label">Contraseña</label>
+                <input type="password" class="login__input" name="passwordLogin" id="password-login-input">
+            </div>
 
             <button class="login__submit-btn">Ingresar</button>
+
+            <p class="login__error-alert" id="login-error-alert"></p>
         </form>
     </div>
 
     <script>
         // elements
         const $loginForm = document.getElementById('login-form');
+        const $loginErrorAlert = document.getElementById('login-error-alert')
 
         // api request
         async function login(url = '', data = {}) {
@@ -46,23 +53,21 @@
         // submit event
         $loginForm.addEventListener('submit', (e) => {
             e.preventDefault()
-            const correo = $loginForm.elements.correoLogin.value
-            const password = $loginForm.elements.passwordLogin.value
 
-            login('/users/login', { correo, password })
+            login('/users/login', { correo: $loginForm.elements.correoLogin.value, password: $loginForm.elements.passwordLogin.value })
                 .then(data => {
+                    $loginForm.elements.correoLogin.value = ''
+                    $loginForm.elements.passwordLogin.value = ''
                     if (data.token) {
                         const token = data.token
                         const date = new Date()
                         date.setTime(date.getTime() + (3*24*60*60*1000))
                         document.cookie = `token=${token}; expires=${date.getUTCDate()}; path=/`
+
                         // Redirigir a chat despues de login exitioso
                         location.href = "/supportchat" 
                     } else {
-                        const errorElement = document.createElement('p')
-                        errorElement.classList.add('login__error')
-                        errorElement.innerHTML = data.error
-                        $loginForm.appendChild(errorElement)
+                        $loginErrorAlert.innerHTML = data.error
                     }
                 })
         })

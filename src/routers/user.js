@@ -6,7 +6,7 @@ const auth = require('../middleware/auth')
 // register user
 router.post('/', auth, async (req, res) => {
     if (req.user.rol !== 'admin') {
-        return res.status(400).send('You must be authenticated as admin!')
+        return res.status(400).send('El usuario debe ser administrador!')
     }
 
     req.body.rol = 'agente'
@@ -17,6 +17,20 @@ router.post('/', auth, async (req, res) => {
         res.status(201).send({ user })
     } catch (error) {
         res.status(400).send(error)
+    }
+})
+
+//delete user
+router.delete('/:id', auth, async (req, res) => {
+    if (req.user.rol !== 'admin') {
+        return res.status(400).send({error: 'El usuario debe ser administrador!'})
+    }
+
+    try {
+        const info = await User.deleteOne({ _id: req.params.id })
+        res.send(info)
+    } catch (error) {
+        res.status(500).send(error)
     }
 })
 
@@ -42,6 +56,22 @@ router.post('/logout', auth, async (req, res) => {
         res.send()
     } catch(error) {
         res.status(500).send()
+    }
+})
+
+// logout of all sessions
+router.post('/logoutall/:id', auth, async(req, res) => {
+    if (req.user.rol !== 'admin') {
+        return res.status(400).send({error: 'El usuario debe ser administrador!'})
+    }
+
+    try {
+        const user = await User.findById(req.params.id)
+        user.tokens = []
+        await user.save()
+        res.send(user)
+    } catch (error) {
+        res.status(500).send(error)
     }
 })
 
@@ -78,7 +108,7 @@ router.get('/:id', auth, async (req, res) => {
 })
 
 // update user info
-router.patch('/:id', auth, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     if (req.user.rol !== 'admin') {
         return res.status(400)
     }

@@ -13,7 +13,7 @@
     <div class="support-chat__header">
         <img src="/img/valagLogo.png" alt="Logo de Valag" class="support-chat__logo">
         <h2 class="support-chat__title">Chat de Soporte</h2>
-        <button class="support-chat__logout" id="support-chat-logout">Logout</button>
+        <button class="support-chat__logout" id="support-chat-logout">Logout <span class="support-chat__logout__icon"><ion-icon name="log-out-outline"></ion-icon></span></button>
     </div>
 
     <div class="support-chat__body">
@@ -39,6 +39,7 @@
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script>
         // Elementos
         const usersList = document.getElementById('users')

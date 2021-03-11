@@ -5,48 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALAG | Admin</title>
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    ADMIN SITE
+    <div class="admin__header">
+        <img src="/img/valagLogo.png" alt="Logo de Valag" class="admin__logo">
+        <h2 class="admin__title">Administración de Usuarios</h2>
+        <button class="admin__logout" id="admin-logout">Logout</button>
+    </div>
 
     <div class="admin__users">
+        <h2 class="admin__users-header primary-header">Lista de Usuarios</h2>
+
+        <button class="admin__user-create" id="admin-user-create">Crear usuario</button>
         {{#each users}}
-            <div class="admin__user-name">{{this.nombre}}</div>
-            <div class="admin__user-email">{{this.correo}}</div>
-            <div class="admin__user-rol">{{this.rol}}</div>
-            <button class="admin__user-logout-all" id={{this._id}}>Cerrar sesiones</button>
-            <button class="admin__user-update" id="admin-user-update" onClick="updateForm('{{this._id}}')">Modificar</button>
-            {{#if (isAdmin this.rol)}}
-            {{else}}
-            <button class="admin__user-delete" id="admin-user-delete">Eliminar</button>
-            {{/if}}
+            <div class="admin__user-item">
+                <div class="admin__user-name">{{this.nombre}}</div>
+                <div class="admin__user-email">{{this.correo}}</div>
+                <div class="admin__user-rol">{{this.rol}}</div>
+                <div class="admin__user-actions">
+                    <button class="admin__user-logout-all" id="admin-user-logoutall" onclick="onLogOutAll(this,'{{this._id}}')">Cerrar sesiones</button>
+                    <button class="admin__user-update" id="admin-user-update" onClick="onUpdateForm('{{this._id}}')">Modificar</button>
+                    {{#if (isAdmin this.rol)}}
+                    {{else}}
+                    <button class="admin__user-delete" id="admin-user-delete" onclick="onDeleteUser('{{this._id}}')">Eliminar</button>
+                    {{/if}}
+                </div>    
+            </div>
         {{/each}}
     </div>
-    <form class="admin__user-form" id="user-update-form">
-        <label for="admin-name-input" class="admin__label">Nombre</label>
-        <input type="text" class="admin__name-input" id="admin-name-input">
-        <label for="admin-name-input" class="admin__label">Correo</label>
-        <input type="text" class="admin__email-input" id="admin-email-input">
-        <label for="admin-name-input" class="admin__label">Contraseña</label>
-        <input type="text" class="admin__password-input" id="admin-password-input">
-        <label for="admin-name-input" class="admin__label">Repite la contraseña</label>
-        <input type="text" class="admin__password-input" id="admin-password2-input">
+    <div class="modal" id="admin-user-form-modal">
+        <form class="admin__user-form modal__content" id="admin-user-form">
+            <a href="/users/admin" class="admin__user-form-close" id="admin-user-form-close">&times;</a>
+            <h3 class="admin__user-form-header" id="admin-user-form-title">Crear usuario</h3>
+            <label for="admin-name-input" class="admin__label">Nombre</label>
+            <input type="text" class="admin__user-input" id="admin-name-input" autocomplete="off">
+            <label for="admin-name-input" class="admin__label">Correo</label>
+            <input type="email" class="admin__user-input" id="admin-email-input" autocomplete="off">
+            <label for="admin-name-input" class="admin__label">Contraseña</label>
+            <input type="password" class="admin__user-input" id="admin-password-input" autocomplete="off">
+            <label for="admin-name-input" class="admin__label">Repite la contraseña</label>
+            <input type="password" class="admin__user-input" id="admin-password2-input" autocomplete="off">
 
-        <button class="admin__submit-form">Guardar</button>
-    </form>
-
-    <button class="admin__user-create" id="admin-user-create">Crear usuario</button>
+            <button class="admin__submit-form">Guardar</button>
+            <p class="admin__user-form-alert" id="admin-user-form-alert"></p>
+        </form>
+    </div>
 
 
     <script>
         // Elementos
-        const $userUpdateForm = document.getElementById('user-update-form');
-        const $userUpdateName = document.getElementById('admin-name-input');
-        const $userUpdateEmail = document.getElementById('admin-email-input');
-        const $userUpdatePassword = document.getElementById('admin-password-input');
-        const $userUpdatePassword2 = document.getElementById('admin-password2-input');
+        const $adminModalBackground = document.getElementById('admin-user-form-modal');
+        const $adminUserFormTitle = document.getElementById('admin-user-form-title')
+        const $adminUserForm = document.getElementById('admin-user-form');
+        const $adminInputName = document.getElementById('admin-name-input');
+        const $adminInputEmail = document.getElementById('admin-email-input');
+        const $adminInputPassword = document.getElementById('admin-password-input');
+        const $adminInputPassword2 = document.getElementById('admin-password2-input');
 
         const $userCreateBtn = document.getElementById('admin-user-create');
+
+        const $adminLogoutBtn = document.getElementById('admin-logout');
+
+        const $adminFormAlert = document.getElementById('admin-user-form-alert');
 
 
         // helper functions
@@ -64,16 +86,47 @@
             return response.json()
         }
 
-        const updateUser = async (userId, data={}) => {
+        const deleteUser = async (userId) => {
             const response = await fetch(`/users/${userId}`, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                })
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            })
+
+            if (response.status !== 200) {
+                throw new Error(response.json())
+            }
+
             return response.json()
         }
 
-        const updateForm = async (userId) => {
+        const updateUser = async (userId, data={}) => {
+            const response = await fetch(`/users/${userId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+
+            if (response.status !== 200) {
+                throw new Error(response.json())
+            }
+
+            return response.json()
+        }
+
+        const logOutAll = async (userId) => {
+            const response = await fetch(`/users/logoutall/${userId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            })
+
+            if (response.status !== 200) {
+                throw new Error(response.json())
+            }
+
+            return response.json()
+        }
+
+        const onUpdateForm = async (userId) => {
             const fetchUser = async (userId) => {
                 const response = await fetch(`/users/${userId}`, {
                     headers: { 'Content-Type': 'application/json' },
@@ -84,49 +137,108 @@
             fetchUser(userId).then(data => {
                 if(data.user) {
                     const user = data.user
-                    $userUpdateName.value = user.nombre
-                    $userUpdateEmail.value = user.correo
+                    $adminInputName.value = user.nombre
+                    $adminInputEmail.value = user.correo
 
                     // Agregar evento para actualizar informacion
-                    $userUpdateForm.addEventListener('submit', (e) => {
+                    $adminUserForm.addEventListener('submit', (e) => {
                         e.preventDefault()
 
-                        const nombre = $userUpdateName.value
-                        const correo = $userUpdateEmail.value
+                        const nombre = $adminInputName.value
+                        const correo = $adminInputEmail.value
 
                         let password
                         // Revisar si la contraseña fue cambiada y si fue repetida correctamente
-                        if ($userUpdatePassword.value !== '' && $userUpdatePassword.value === $userUpdatePassword2.value) {
-                            password = $userUpdatePassword.value
+                        if ($adminInputPassword.value !== '') {
+                            if ($adminInputPassword.value === $adminInputPassword2.value) {
+                                password = $adminInputPassword.value
+                            } else {
+                                // Mostrar error
+                                return $adminFormAlert.innerHTML = 'Las contraseñas no coinciden!'
+                            }
                         }
 
 
                         updateUser(userId, { nombre, correo, password }).then(data => {
-                            if (data.user) {
-                                console.log(data.user)
-                                // Agregar nueva info a la lista de usuarios o recargar pag
-                            }
+                            location.href = '/users/admin'
+                        }).catch(data => {
+                            console.log('failed', data)
+                            // Mostrar alerta en el formulario
+                            $adminFormAlert.innerHTML = 'ERROR! Por favor verifique los datos'
                         })
                     })
+                    // Mostrar el modal y cambiar titulo del formulario
+                    location.href = '#admin-user-form-modal'
+                    $adminUserFormTitle.innerHTML = 'Actualizar Usuario'
                 }
             })
         };
 
         // Agregar nuevo evento a formulario cuando se oprima en crear usuario
         $userCreateBtn.addEventListener('click', () =>{
-            $userUpdateForm.addEventListener('submit', (e) => {
+            // agregar evento al submit del formulario
+            $adminUserForm.addEventListener('submit', (e) => {
                 e.preventDefault()
 
                 // crear usuario
-                const nombre = $userUpdateName.value
-                const correo = $userUpdateEmail.value
-                const password = $userUpdatePassword.value
+                const nombre = $adminInputName.value
+                const correo = $adminInputEmail.value
+                const password = $adminInputPassword.value
+                const password2 = $adminInputPassword2.value
+
+                // Revisar que las contraseñas coincidan
+                if (password !== password2) {
+                    return $adminFormAlert.innerHTML = 'Las contraseñas no coinciden!'
+                }
+
                 registerUser({ nombre, correo, password}).then(data => {
-                    console.log('success', data)
+                    // recargar página para mostrar usuario creado
+                    location.href = '/users/admin'
                 }).catch(data => {
-                    console.log('failed', data)
+                    // Mostrar alerta en el formulario
+                    $adminFormAlert.innerHTML = 'ERROR! Por favor verifique los datos'
                 })
             })
+
+            // Mostrar el modal y cambiar el titulo del formulario
+            location.href = '#admin-user-form-modal'
+            $adminUserFormTitle.innerHTML = 'Crear Usuario'
+        });
+
+        // Funcion para eliminar usuario
+        const onDeleteUser = (userId) => {
+            deleteUser(userId).then(data => {
+                location.href = '/users/admin'
+            })
+        };
+
+        // Funcion para cerrar todas las sesiones del usuario
+        const onLogOutAll = (el, userId) => {
+            logOutAll(userId).then(data => {
+                el.style.backgroundColor = '#49a731'
+                if (data.rol === 'admin') {
+                    location.href = '/users/admin'
+                }
+            })
+        };
+
+        // Evento para cerrar la sesion de administrador
+        $adminLogoutBtn.addEventListener('click', () => {
+            fetch('/users/logout', { method: 'POST' })
+                .then(data => {
+                    if (data.status === 200) {
+                        location.href = '/supportchat'
+                    }
+                })
+        });
+
+        // Evento para cerrar modal cuando se haga click en el background
+        $adminModalBackground.addEventListener('click', () => {
+            location.href = '/users/admin'
+        });
+        // Evitar que el modal se cierre si el click es dentro del form
+        $adminUserForm.addEventListener('click', (e) => {
+            e.stopPropagation()
         });
     </script>
 </body>

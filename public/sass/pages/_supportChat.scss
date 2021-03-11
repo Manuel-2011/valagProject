@@ -13,22 +13,42 @@
         height: 90%;
     }
 
+    &__title {
+        font-size: 2rem
+    }
+
     &__logout {
+        @include flexCenter;
+        font-size: 1.6rem;
         background-color: $red-color;
         color: $font-color-carousel;
         border: 0;
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         padding: 1rem;
         margin-right: 2rem;
         cursor: pointer;
-        transition: transform 0.2s;
+        box-shadow: 0 0.5rem 1rem rgba($shadow-color, .2);
+        transition: all 0.2s;
+
+        z-index: 100;
 
         &:hover {
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.2rem);
+        }
+
+        &:active {
+            transform: translateY(-0.1rem);
         }
 
         &:focus {
             outline: none;
+            transform: scale(1.05);
+            box-shadow: 0 0.4rem 1rem rgba($shadow-color, .4);
+        }
+
+        &__icon {
+            font-size: 2rem;
+            margin-left: 1rem;
         }
     }
 
@@ -66,17 +86,18 @@
     grid-template-rows: 10rem auto 5rem;
 
     &__title {
-        height: 95%;
+        height: 100%;
         padding: 3rem;
         text-align: center;
         color: $background-form-color1;
         background-color: $navbar-color;
-        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
     }
 
     &__messages {
         height: 100%;
         overflow-y: scroll;
+        box-shadow: inset 0 0 2rem rgba($shadow-color, .2);
+        background-color: $navbar-color;
     }
 
     &__message-box {
