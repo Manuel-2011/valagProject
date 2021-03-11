@@ -1,7 +1,62 @@
 .support-chat {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+
+    &__header {
+        height: 8vh;
+        background-color: $navbar-color;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        height: 90%;
+    }
+
+    &__title {
+        font-size: 2rem
+    }
+
+    &__logout {
+        @include flexCenter;
+        font-size: 1.6rem;
+        background-color: $red-color;
+        color: $font-color-carousel;
+        border: 0;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-right: 2rem;
+        cursor: pointer;
+        box-shadow: 0 0.5rem 1rem rgba($shadow-color, .2);
+        transition: all 0.2s;
+
+        z-index: 100;
+
+        &:hover {
+            transform: translateY(-0.2rem);
+        }
+
+        &:active {
+            transform: translateY(-0.1rem);
+        }
+
+        &:focus {
+            outline: none;
+            transform: scale(1.05);
+            box-shadow: 0 0.4rem 1rem rgba($shadow-color, .4);
+        }
+
+        &__icon {
+            font-size: 2rem;
+            margin-left: 1rem;
+        }
+    }
+
+    &__body {
+        display: flex;
+        width: 100vw;
+        height: 92vh;
+    }   
 }
 
 .sidebar-support-chat {
@@ -26,22 +81,23 @@
 
 .support-chat-board {
     width: 100%;
-    height: 100vh;
+    height: 92vh;
     display: grid;
     grid-template-rows: 10rem auto 5rem;
 
     &__title {
-        height: 95%;
+        height: 100%;
         padding: 3rem;
         text-align: center;
         color: $background-form-color1;
         background-color: $navbar-color;
-        box-shadow: 0 1rem 2rem rgba($shadow-color, .2);
     }
 
     &__messages {
         height: 100%;
         overflow-y: scroll;
+        box-shadow: inset 0 0 2rem rgba($shadow-color, .2);
+        background-color: $navbar-color;
     }
 
     &__message-box {
