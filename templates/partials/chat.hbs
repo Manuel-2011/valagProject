@@ -10,7 +10,7 @@
   <div class="client-chat__chat-board" id="messages"></div>
   <form class="client-chat__message-form" id="form" action="">
     <input class="client-chat__message-input" id="input" autocomplete="off" />
-    <button class="client-chat__message-submit" type="submit">Enviar <ion-icon name="send"></ion-icon></button>
+    <button class="client-chat__message-submit" type="submit"><ion-icon name="send"></ion-icon></button>
   </form>
 
 
@@ -34,7 +34,7 @@
   const clientMessageForm = document.getElementById('form');
   const clientMessageInput = document.getElementById('input');
 
-  const usernameClientForm = document.getElementById('username-client-form')
+  const $usernameClientForm = document.getElementById('username-client-form')
   const usernameClientError = document.getElementById('client-chat-username-error')
 
   const closeClientChat = document.getElementById('client-chat-close')
@@ -134,7 +134,7 @@
   }
 
   // Submit username form del chat
-  usernameClientForm.addEventListener('submit', (e) => {
+  $usernameClientForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     username = e.target.elements.username.value
@@ -212,6 +212,10 @@
   })
   // No minimzar chat si click se hace sobre el chat form
   clientMessageForm.addEventListener('click', e => {
+    e.stopPropagation()
+  })
+  // No minimizar el chat si el click se hace sobre el user form
+  $usernameClientForm.addEventListener('click', (e) => {
     e.stopPropagation()
   })
 

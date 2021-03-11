@@ -340,7 +340,9 @@ body {
     padding: 1rem;
     border: 0;
     border-radius: 0;
-    border-bottom: 3px solid transparent; }
+    border-bottom: 3px solid transparent;
+    font-size: 1.3rem;
+    color: #646464; }
     @media only screen and (max-width: 37.5em) {
       .client-chat__message-input {
         font-size: 2.3rem; } }
@@ -353,7 +355,7 @@ body {
     color: #fff;
     border: 0;
     cursor: pointer;
-    font-size: 1.5rem; }
+    font-size: 2.5rem; }
   .client-chat__username-form {
     height: 20.5rem;
     display: flex;
@@ -369,10 +371,11 @@ body {
     font-family: inherit;
     border-radius: 3px;
     border: 0;
+    border-bottom: 3px solid transparent;
     margin: 1rem 0; }
     .client-chat__username-input:focus {
       outline: none;
-      box-shadow: 0 0 3rem rgba(255, 255, 255, 0.5); }
+      border-bottom: 3px solid #1e57ac; }
   .client-chat__username-submit {
     font-size: 1.5rem;
     display: inline-block; }
