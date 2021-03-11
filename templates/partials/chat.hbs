@@ -1,6 +1,7 @@
 <div class="client-chat username minimized" id="client-chat-tab">
   <div class="client-chat__notification" id="client-chat-notification">
     Nuevo mensaje
+    <span class="client-chat__notification__icon"><ion-icon name="add"></ion-icon></span>
   </div>
   <div class="client-chat__controls">
     <button class="client-chat__close" id="client-chat-close">&times;</button>
@@ -217,6 +218,6 @@
   // No minimizar el chat si el click se hace sobre el user form
   $usernameClientForm.addEventListener('click', (e) => {
     e.stopPropagation()
-  })
+  });
 
 </script>

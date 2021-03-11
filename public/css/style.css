@@ -276,8 +276,14 @@ body {
       top: -3rem;
       left: 10%;
       display: block;
-      border-radius: 2rem;
-      font-size: 1.6rem; }
+      border-radius: 1rem;
+      font-size: 1.6rem;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+      transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
+    .client-chat__notification:hover {
+      transform: scale(1.05) translateY(-0.5rem); }
+    .client-chat__notification__icon {
+      font-size: 2rem; }
   .client-chat__controls {
     position: absolute;
     top: 1rem;
