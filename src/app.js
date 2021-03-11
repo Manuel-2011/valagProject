@@ -28,6 +28,9 @@ const viewsPath = path.join(__dirname, '../templates/views')
 app.set('views', viewsPath)
 const partialsPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialsPath)
+hbs.registerHelper('isAdmin', function (value) {
+    return value === 'admin';
+});
 
 app.get('/', (req, res) => {
     res.render('index')

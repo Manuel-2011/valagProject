@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALAG | Admin</title>
+</head>
+<body>
+    ADMIN SITE
+
+    <div class="admin__users">
+        {{#each users}}
+            <div class="admin__user-name">{{this.nombre}}</div>
+            <div class="admin__user-email">{{this.correo}}</div>
+            <div class="admin__user-rol">{{this.rol}}</div>
+            <button class="admin__user-logout-all" id={{this._id}}>Cerrar sesiones</button>
+            <button class="admin__user-update" id="admin-user-update" onClick="updateForm('{{this._id}}')">Modificar</button>
+            {{#if (isAdmin this.rol)}}
+            {{else}}
+            <button class="admin__user-delete" id="admin-user-delete">Eliminar</button>
+            {{/if}}
+        {{/each}}
+    </div>
+    <form class="admin__user-form" id="user-update-form">
+        <label for="admin-name-input" class="admin__label">Nombre</label>
+        <input type="text" class="admin__name-input" id="admin-name-input">
+        <label for="admin-name-input" class="admin__label">Correo</label>
+        <input type="text" class="admin__email-input" id="admin-email-input">
+        <label for="admin-name-input" class="admin__label">Contraseña</label>
+        <input type="text" class="admin__password-input" id="admin-password-input">
+        <label for="admin-name-input" class="admin__label">Repite la contraseña</label>
+        <input type="text" class="admin__password-input" id="admin-password2-input">
+
+        <button class="admin__submit-form">Guardar</button>
+    </form>
+
+    <button class="admin__user-create" id="admin-user-create">Crear usuario</button>
+
+
+    <script>
+        // Elementos
+        const $userUpdateForm = document.getElementById('user-update-form');
+        const $userUpdateName = document.getElementById('admin-name-input');
+        const $userUpdateEmail = document.getElementById('admin-email-input');
+        const $userUpdatePassword = document.getElementById('admin-password-input');
+        const $userUpdatePassword2 = document.getElementById('admin-password2-input');
+
+        const $userCreateBtn = document.getElementById('admin-user-create');
+
+
+        // helper functions
+        const registerUser = async (data={}) => {
+            const response = await fetch('/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+ 
+            if (response.status !== 201) {
+                throw new Error(response.json())
+            }
+
+            return response.json()
+        }
+
+        const updateUser = async (userId, data={}) => {
+            const response = await fetch(`/users/${userId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+            return response.json()
+        }
+
+        const updateForm = async (userId) => {
+            const fetchUser = async (userId) => {
+                const response = await fetch(`/users/${userId}`, {
+                    headers: { 'Content-Type': 'application/json' },
+                })
+                return response.json()
+            }
+            
+            fetchUser(userId).then(data => {
+                if(data.user) {
+                    const user = data.user
+                    $userUpdateName.value = user.nombre
+                    $userUpdateEmail.value = user.correo
+
+                    // Agregar evento para actualizar informacion
+                    $userUpdateForm.addEventListener('submit', (e) => {
+                        e.preventDefault()
+
+                        const nombre = $userUpdateName.value
+                        const correo = $userUpdateEmail.value
+
+                        let password
+                        // Revisar si la contraseña fue cambiada y si fue repetida correctamente
+                        if ($userUpdatePassword.value !== '' && $userUpdatePassword.value === $userUpdatePassword2.value) {
+                            password = $userUpdatePassword.value
+                        }
+
+
+                        updateUser(userId, { nombre, correo, password }).then(data => {
+                            if (data.user) {
+                                console.log(data.user)
+                                // Agregar nueva info a la lista de usuarios o recargar pag
+                            }
+                        })
+                    })
+                }
+            })
+        };
+
+        // Agregar nuevo evento a formulario cuando se oprima en crear usuario
+        $userCreateBtn.addEventListener('click', () =>{
+            $userUpdateForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+
+                // crear usuario
+                const nombre = $userUpdateName.value
+                const correo = $userUpdateEmail.value
+                const password = $userUpdatePassword.value
+                registerUser({ nombre, correo, password}).then(data => {
+                    console.log('success', data)
+                }).catch(data => {
+                    console.log('failed', data)
+                })
+            })
+        });
+    </script>
+</body>
+</html>
