@@ -12,13 +12,19 @@
     <div class="admin__header">
         <img src="/img/valagLogo.png" alt="Logo de Valag" class="admin__logo">
         <h2 class="admin__title">Administración de Usuarios</h2>
-        <button class="admin__logout" id="admin-logout">Logout</button>
+        <button class="admin__logout" id="admin-logout">Logout <span class="admin__logout__icon"><ion-icon name="log-out-outline"></ion-icon></span></button>
     </div>
 
     <div class="admin__users">
         <h2 class="admin__users-header primary-header">Lista de Usuarios</h2>
 
         <button class="admin__user-create" id="admin-user-create">Crear usuario</button>
+        <div class="admin__user-table-header">
+            <div class="admin__user-name">Nombre</div>
+            <div class="admin__user-email">Correo</div>
+            <div class="admin__user-rol">Rol</div>
+            <div class="admin__user-actions">Acciones</div>
+        </div>
         {{#each users}}
             <div class="admin__user-item">
                 <div class="admin__user-name">{{this.nombre}}</div>
@@ -53,7 +59,7 @@
         </form>
     </div>
 
-
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script>
         // Elementos
         const $adminModalBackground = document.getElementById('admin-user-form-modal');

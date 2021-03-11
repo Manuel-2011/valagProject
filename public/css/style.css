@@ -823,23 +823,51 @@ body {
 .admin__logo {
   height: 90%; }
 
+.admin__title {
+  font-size: 2rem; }
+
 .admin__logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
   background-color: #d12a2a;
   color: #fff;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   margin-right: 2rem;
   cursor: pointer;
-  transition: transform 0.2s; }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  z-index: 100; }
   .admin__logout:hover {
-    transform: translateY(-0.5rem); }
+    transform: translateY(-0.2rem); }
+  .admin__logout:active {
+    transform: translateY(-0.1rem); }
   .admin__logout:focus {
-    outline: none; }
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.4); }
+  .admin__logout__icon {
+    font-size: 2rem;
+    margin-left: 1rem; }
+
+.admin__user-table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
+  width: 70%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #646464; }
+  .admin__user-table-header > * {
+    text-align: center; }
 
 .admin__user-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr;
   width: 70%;
   margin: 0 auto;
   padding: 3rem 0;
@@ -849,11 +877,12 @@ body {
 
 .admin__user-actions > * {
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   padding: 0.5rem 1rem;
   cursor: pointer;
   color: #fff;
+  font-size: 1.3rem;
   transition: all .2s; }
   .admin__user-actions > *:hover {
     transform: translateY(-0.2rem); }
@@ -902,7 +931,7 @@ body {
 .admin__user-create {
   background-color: #49a731;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -910,7 +939,7 @@ body {
   border: 0;
   margin: 2rem;
   margin-left: 15%;
-  font-size: 1.5rem; }
+  font-size: 1.6rem; }
   .admin__user-create:hover {
     transform: translateY(-0.2rem); }
   .admin__user-create:focus {
