@@ -1,5 +1,6 @@
 .carousel {
     height: 78rem;
+    max-height: 100%;
     position: relative;
 
     @include respond(phone) {
@@ -10,6 +11,7 @@
         padding-top: 7.9rem;
         width: 100vw;
         height: 78rem;
+        max-height: 100%;
         overflow: hidden;
 
         border-radius: 3px 3px 45rem 3px;
