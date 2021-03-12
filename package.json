@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "env-cmd -f ./config/dev.env nodemon src/app.js -e js,hbs",
     "watch:sass": "node-sass public/sass/main.scss public/css/style.css -w",
-    "start": "npm-run-all --parallel dev watch:sass",
+    "start:dev": "npm-run-all --parallel dev watch:sass",
+    "start": "node src/app.js",
     "compile:sass": "node-sass public/sass/main.scss public/css/style.comp.css",
     "concat:css": "concat -o public/css/style.concat.css public/css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' public/css/style.concat.css -o public/css/style.prefix.css",
