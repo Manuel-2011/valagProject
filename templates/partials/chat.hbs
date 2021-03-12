@@ -120,7 +120,10 @@
       socket.emit('join', { username, rol: 'client'}, (error) => {
         if (error) {
           if (error === 'UsernameInvalid') {
-            return clientAddNewMessage({text: 'Lo siento! Solo puede tener un chat activo al tiempo. Regrese a la anterior pestaña!'})
+            // mostrar la username-form y esconder el chat
+            chatTab.classList.add('username')
+            chatTab.classList.remove('chat')
+            return usernameClientError.innerHTML = `El nombre de usuario '${username}' está en uso. Por favor pruebe con otro!`
           } else if (error === 'noSupportAgents') {
             clientAddNewMessage({text: 'Lo siento! En este momento no hay asesores disponibles. Por favor, intenta más tarde.'}, 'support')
             socket.on('agentAvailable', () => {
