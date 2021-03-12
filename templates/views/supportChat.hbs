@@ -93,7 +93,7 @@
                 newMessage.classList.add('support-chat-board__message--support')
             }
             // Agregar contenido del texto
-            newMessage.innerHTML = message.text
+            newMessage.innerText = message.text
             // Agregar mensaje al chat
             messageBox.appendChild(newMessage)
             chat.appendChild(messageBox)
