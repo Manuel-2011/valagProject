@@ -1353,6 +1353,9 @@ body {
   outline: 1.5rem inset #103179;
   outline-offset: 3rem; }
 
+.nosotros-clientes {
+  padding-top: 8rem; }
+
 .clientes {
   max-width: 100rem;
   margin: 0 auto;
