@@ -211,7 +211,7 @@ body {
       object-position: center;
       width: inherit;
       height: 100%;
-      opacity: 0.6; }
+      opacity: 0.3; }
     .carousel__slide__content {
       position: absolute;
       top: 50%;
