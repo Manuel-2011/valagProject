@@ -118,7 +118,7 @@
         const loadMessages = (username) => {
             cleanChat()
 
-            const loadChat = JSON.parse(localStorage.getItem('valag-chat'))
+            const loadChat = JSON.parse(localStorage.getItem('valag-chat')) || {}
 
             if (loadChat[username]) {
                 loadChat[username].forEach(msg => {
