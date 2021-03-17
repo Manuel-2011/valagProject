@@ -384,9 +384,15 @@ body {
     .client-chat__username-input:focus {
       outline: none;
       border-bottom: 3px solid #1e57ac; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__username-input {
+        font-size: 2.3rem; } }
   .client-chat__username-submit {
     font-size: 1.5rem;
     display: inline-block; }
+    @media only screen and (max-width: 37.5em) {
+      .client-chat__username-submit {
+        font-size: 2.3rem; } }
   .client-chat__username-error {
     font-size: 1.5rem; }
   .client-chat__message-box {
@@ -762,6 +768,9 @@ body {
   color: #646464;
   margin: 1rem 0;
   margin-bottom: 2rem; }
+  @media only screen and (max-width: 37.5em) {
+    .custom-select {
+      font-size: 2.3rem; } }
 
 .custom-select select {
   display: none;
@@ -803,6 +812,9 @@ body {
   left: 0;
   right: 0;
   z-index: 99; }
+  @media only screen and (max-width: 56.25em) {
+    .select-items {
+      top: -200%; } }
 
 /* Hide the items when the select box is closed: */
 .select-hide {

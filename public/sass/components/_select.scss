@@ -6,6 +6,10 @@
     color: $secondary-font-color;
     margin: 1rem 0;
     margin-bottom: 2rem;
+
+    @include respond(phone) {
+      font-size: 2.3rem;
+    }
   }
   
   .custom-select select {
@@ -52,6 +56,10 @@
     left: 0;
     right: 0;
     z-index: 99;
+
+    @include respond(tab-port) {
+      top: -200%;
+    }
   }
   
   /* Hide the items when the select box is closed: */
