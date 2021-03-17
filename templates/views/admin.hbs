@@ -24,6 +24,7 @@
             <div class="admin__user-name">Nombre</div>
             <div class="admin__user-email">Correo</div>
             <div class="admin__user-rol">Rol</div>
+            <div class="admin__user-rol">Tipo Soporte</div>
             <div class="admin__user-actions">Acciones</div>
         </div>
         {{#each users}}
@@ -31,6 +32,7 @@
                 <div class="admin__user-name">{{this.nombre}}</div>
                 <div class="admin__user-email">{{this.correo}}</div>
                 <div class="admin__user-rol">{{this.rol}}</div>
+                <div class="admin__user-support-type">{{this.supportType}}</div>
                 <div class="admin__user-actions">
                     <button class="admin__user-logout-all" id="admin-user-logoutall" onclick="onLogOutAll(this,'{{this._id}}')">Cerrar sesiones</button>
                     <button class="admin__user-update" id="admin-user-update" onClick="onUpdateForm('{{this._id}}')">Modificar</button>
@@ -50,6 +52,11 @@
             <input type="text" class="admin__user-input" id="admin-name-input" autocomplete="off">
             <label for="admin-name-input" class="admin__label">Correo</label>
             <input type="email" class="admin__user-input" id="admin-email-input" autocomplete="off">
+            <label for="admin-supportType-select" class="admin__label">Tipo Soporte</label>
+            <select name="supportType" id="admin-supportType-select" class="admin__user-input" required>
+                <option value="tecnico">Soporte Técnico</option>
+                <option value="administrativo">Soporte Administrativo</option>
+            </select>
             <label for="admin-name-input" class="admin__label">Contraseña</label>
             <input type="password" class="admin__user-input" id="admin-password-input" autocomplete="off">
             <label for="admin-name-input" class="admin__label">Repite la contraseña</label>
@@ -68,6 +75,7 @@
         const $adminUserForm = document.getElementById('admin-user-form');
         const $adminInputName = document.getElementById('admin-name-input');
         const $adminInputEmail = document.getElementById('admin-email-input');
+        const $adminSupportType = document.getElementById('admin-supportType-select')
         const $adminInputPassword = document.getElementById('admin-password-input');
         const $adminInputPassword2 = document.getElementById('admin-password2-input');
 
@@ -146,6 +154,7 @@
                     const user = data.user
                     $adminInputName.value = user.nombre
                     $adminInputEmail.value = user.correo
+                    $adminSupportType.value = user.supportType
 
                     // Agregar evento para actualizar informacion
                     $adminUserForm.addEventListener('submit', (e) => {
@@ -153,6 +162,7 @@
 
                         const nombre = $adminInputName.value
                         const correo = $adminInputEmail.value
+                        const supportType = $adminSupportType.value
 
                         let password
                         // Revisar si la contraseña fue cambiada y si fue repetida correctamente
@@ -166,7 +176,7 @@
                         }
 
 
-                        updateUser(userId, { nombre, correo, password }).then(data => {
+                        updateUser(userId, { nombre, correo, supportType, password }).then(data => {
                             location.href = '/users/admin'
                         }).catch(data => {
                             console.log('failed', data)
@@ -190,6 +200,7 @@
                 // crear usuario
                 const nombre = $adminInputName.value
                 const correo = $adminInputEmail.value
+                const supportType = $adminSupportType.value
                 const password = $adminInputPassword.value
                 const password2 = $adminInputPassword2.value
 
@@ -198,7 +209,7 @@
                     return $adminFormAlert.innerHTML = 'Las contraseñas no coinciden!'
                 }
 
-                registerUser({ nombre, correo, password}).then(data => {
+                registerUser({ nombre, correo, supportType, password}).then(data => {
                     // recargar página para mostrar usuario creado
                     location.href = '/users/admin'
                 }).catch(data => {

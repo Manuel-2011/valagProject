@@ -114,7 +114,7 @@ router.put('/:id', auth, async (req, res) => {
     }
 
     // only update allowed fields
-    const allowedUpdates = ['nombre', 'correo', 'password']
+    const allowedUpdates = ['nombre', 'correo', 'supportType', 'password']
 
     try {
         const user = await User.findById(req.params.id)

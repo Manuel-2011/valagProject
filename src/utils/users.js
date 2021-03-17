@@ -1,6 +1,6 @@
 const users = []
 
-const addUser = ({ id, username, rol}) => {
+const addUser = ({ id, username, rol, supportType }) => {
     // Clean the data
     username = username.trim().toLowerCase()
 
@@ -23,8 +23,15 @@ const addUser = ({ id, username, rol}) => {
         }
     }
 
+    // Check supportType is assigned
+    if (supportType !== 'tecnico' && supportType !== 'administrativo') {
+        return {
+            error: 'supportType empty'
+        }
+    }
+
     // Store user
-    const user = { id, username, rol }
+    const user = { id, username, rol, supportType }
     users.push(user)
     return { user }
 }
@@ -44,9 +51,9 @@ const getUserByName = (name) => {
     return users.find((user) => user.username === name)
 }
 
-const getClients = () => users.filter(user => user.rol === 'client')
+const getClients = (type) => users.filter(user => user.rol === 'client' && user.supportType === type)
 
-const getAgents = () => users.filter(user => user.rol === 'support')
+const getAgents = (type) => users.filter(user => user.rol !== 'client' && user.supportType === type)
 
 
 module.exports = {
