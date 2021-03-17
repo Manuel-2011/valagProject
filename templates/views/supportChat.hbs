@@ -172,7 +172,7 @@
         supportSendBtn.disabled = true
 
         //Entrar a chat de soporte
-        socket.emit('join', { username: 'Carlos', rol: 'support'}, (error) => {
+        socket.emit('join', { username: '{{agentUser.nombre}}', rol: '{{agentUser.rol}}', supportType: '{{agentUser.supportType}}' }, (error) => {
             if (error) {
                 return addNewMessage({ text: error })
             }

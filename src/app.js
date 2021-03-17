@@ -45,7 +45,7 @@ app.get('/nosotros', (req, res) => {
 })
 
 app.get('/supportchat', auth, (req, res) => {
-    res.render('supportChat')
+    res.render('supportChat', { agentUser: req.user})
 })
 
 // events
@@ -66,22 +66,23 @@ io.on('connection', (socket) => {
             socket.join(user.username)
 
             // Revisar si no hay agentes de soporte disponibles
-            if (getAgents().length === 0) {
+            if (getAgents(user.supportType).length === 0) {
                 return callback('noSupportAgents')
             }
 
 
             // Emit the join event for support to know
-            io.to('support').emit('clientJoin', user)
+            // Emit the event to the corresponding support agents
+            io.to(user.supportType).emit('clientJoin', user)
 
             // Welcome the user
             socket.emit('newMessage', generateMessage('Valag', 'Bienvenido a Valag, ¿en qué te podemos ayudar?'))
         } else {
-            socket.join('support')
+            socket.join(user.supportType)
             // Enviar clientes activos al soporte que se unió
-            socket.emit('supportJoin', getClients())
+            socket.emit('supportJoin', getClients(user.supportType))
             // Enviar evento para clientes que estaban conectados pero no habían agentes de soporte disponibles
-            io.emit('agentAvailable')
+            io.emit('agentAvailable', user.supportType)
         }
 
         callback()
@@ -99,13 +100,13 @@ io.on('connection', (socket) => {
                  // Enviar mensaje a cliente
                 io.to(client.username).emit('newMessage', generateMessage(from.username, message))
                 // Enviar mensaje a soporte
-                io.to('support').emit('newMessage', generateMessage(from.username, message, client.username))
+                io.to(client.supportType).emit('newMessage', generateMessage(from.username, message, client.username))
             } else {
                 client = from
                  // Enviar mensaje a cliente
                  io.to(client.username).emit('newMessage', generateMessage(from.username, message))
                  // Enviar mensaje a soporte
-                 io.to('support').emit('newMessage', generateMessage(from.username, message))
+                 io.to(client.supportType).emit('newMessage', generateMessage(from.username, message))
             }
 
             callback()
@@ -121,7 +122,7 @@ io.on('connection', (socket) => {
     
         if (user) {
             if (user.rol === 'client') {
-                io.to('support').emit('clientLeft', user)
+                io.to(user.supportType).emit('clientLeft', user)
             }
         }
     })
